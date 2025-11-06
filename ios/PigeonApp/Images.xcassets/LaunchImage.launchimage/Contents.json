@@ -2,7 +2,7 @@
   "images" : [
     {
       "extent" : "full-screen",
-      "filename" : "未命名图片 2.png",
+      "filename" : "未命名图片 (8).png",
       "idiom" : "iphone",
       "minimum-system-version" : "12.0",
       "orientation" : "portrait",
@@ -11,7 +11,7 @@
     },
     {
       "extent" : "full-screen",
-      "filename" : "未命名图片 4.png",
+      "filename" : "未命名图片 (10).png",
       "idiom" : "iphone",
       "minimum-system-version" : "12.0",
       "orientation" : "landscape",
@@ -20,7 +20,7 @@
     },
     {
       "extent" : "full-screen",
-      "filename" : "未命名图片 3.png",
+      "filename" : "未命名图片 (9).png",
       "idiom" : "iphone",
       "minimum-system-version" : "12.0",
       "orientation" : "portrait",
@@ -29,7 +29,7 @@
     },
     {
       "extent" : "full-screen",
-      "filename" : "未命名图片 5.png",
+      "filename" : "未命名图片 (11).png",
       "idiom" : "iphone",
       "minimum-system-version" : "12.0",
       "orientation" : "landscape",
@@ -54,7 +54,7 @@
     },
     {
       "extent" : "full-screen",
-      "filename" : "未命名图片.png",
+      "filename" : "未命名图片 (7).png",
       "idiom" : "iphone",
       "minimum-system-version" : "11.0",
       "orientation" : "portrait",
@@ -63,7 +63,7 @@
     },
     {
       "extent" : "full-screen",
-      "filename" : "未命名图片 1.png",
+      "filename" : "未命名图片 (6).png",
       "idiom" : "iphone",
       "minimum-system-version" : "11.0",
       "orientation" : "landscape",
@@ -104,7 +104,7 @@
     },
     {
       "extent" : "full-screen",
-      "filename" : "未命名图片 6.png",
+      "filename" : "未命名图片 (3).png",
       "idiom" : "iphone",
       "minimum-system-version" : "8.0",
       "orientation" : "portrait",
@@ -113,7 +113,7 @@
     },
     {
       "extent" : "full-screen",
-      "filename" : "未命名图片 8.png",
+      "filename" : "未命名图片 (5).png",
       "idiom" : "iphone",
       "minimum-system-version" : "8.0",
       "orientation" : "landscape",
@@ -122,7 +122,7 @@
     },
     {
       "extent" : "full-screen",
-      "filename" : "未命名图片 7.png",
+      "filename" : "未命名图片 (4).png",
       "idiom" : "iphone",
       "minimum-system-version" : "8.0",
       "orientation" : "portrait",
@@ -131,7 +131,7 @@
     },
     {
       "extent" : "full-screen",
-      "filename" : "未命名图片 9.png",
+      "filename" : "未命名图片 (1).png",
       "idiom" : "iphone",
       "minimum-system-version" : "7.0",
       "orientation" : "portrait",
@@ -139,7 +139,7 @@
     },
     {
       "extent" : "full-screen",
-      "filename" : "LaunchImage-568h@2x.png",
+      "filename" : "未命名图片 (2) 1.png",
       "idiom" : "iphone",
       "minimum-system-version" : "7.0",
       "orientation" : "portrait",
@@ -183,14 +183,14 @@
     },
     {
       "extent" : "full-screen",
-      "filename" : "未命名图片 10.png",
+      "filename" : "未命名图片 (1) 1.png",
       "idiom" : "iphone",
       "orientation" : "portrait",
       "scale" : "2x"
     },
     {
       "extent" : "full-screen",
-      "filename" : "未命名图片 (1).png",
+      "filename" : "未命名图片 (2).png",
       "idiom" : "iphone",
       "orientation" : "portrait",
       "scale" : "2x",

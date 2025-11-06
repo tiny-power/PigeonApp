@@ -6,11 +6,8 @@ const Home = ({ navigation }) => {
     const [profiles, setProfiles] = useState([])
 
     useEffect(() => {
-        const unsubscribe = navigation.addListener('focus', () => {
-            fetchData()
-        })
-        return unsubscribe
-    }, [])
+        fetchData()
+    }, [navigation])
 
     const fetchData = async () => {
         let profilesStr = await localStorage.getItem('profiles')
@@ -43,9 +40,10 @@ const Home = ({ navigation }) => {
         navigation.navigate('newServer')
     }
 
-    const deleteProfile = index => {
-        setProfiles(profiles.filter((_, i) => i !== index))
-        localStorage.setItem('profiles', JSON.stringify(profiles))
+    const deleteProfile = async index => {
+        let newProfiles = profiles.filter((_, i) => i !== index)
+        setProfiles(newProfiles)
+        await localStorage.setItem('profiles', JSON.stringify(newProfiles))
     }
 
     const listBuckets = item => {

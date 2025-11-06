@@ -30,7 +30,6 @@ const ListBuckets = ({ route, navigation }) => {
                     })
                 }
                 let contents = data.Contents
-                console.log(contents)
                 for (let i = 0; i < contents.length; i++) {
                     bucketsList.push({
                         Type: 'file',

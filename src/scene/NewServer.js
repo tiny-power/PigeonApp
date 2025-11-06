@@ -144,7 +144,7 @@ const NewServer = ({ navigation }) => {
                     pathStyle: pathStyle
                 })
                 await localStorage.setItem('profiles', JSON.stringify(profiles))
-                navigation.pop()
+                navigation.reset({ index: 0, routes: [{ name: 'home' }] })
             }
         })
     }

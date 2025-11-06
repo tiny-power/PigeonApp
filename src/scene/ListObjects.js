@@ -31,12 +31,14 @@ const ListBuckets = ({ route, navigation }) => {
                 }
                 let contents = data.Contents
                 for (let i = 0; i < contents.length; i++) {
-                    bucketsList.push({
-                        Type: 'file',
-                        Name: contents[i].Key.replace(prefix, ''),
-                        Size: contents[i].Size,
-                        LastModified: contents[i].LastModified
-                    })
+                    if (contents[i].Size > 0) {
+                        bucketsList.push({
+                            Type: 'file',
+                            Name: contents[i].Key.replace(prefix, ''),
+                            Size: contents[i].Size,
+                            LastModified: contents[i].LastModified
+                        })
+                    }
                 }
                 setBuckets(bucketsList)
             }

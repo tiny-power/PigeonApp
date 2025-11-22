@@ -39,6 +39,13 @@ target 'PigeonApp' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  pod 'AnyThinkiOS','6.4.91'
+  pod 'AnyThinkKuaiShouSDKAdapter','6.4.91'
+  pod 'AnyThinkSigmobSDKAdapter','6.4.91'
+  pod 'AnyThinkTTSDKAdapter','6.4.91'
+  pod 'AnyThinkGDTSDKAdapter','6.4.91'
+  pod 'Masonry'
+
   target 'PigeonAppTests' do
     inherit! :complete
     # Pods for testing

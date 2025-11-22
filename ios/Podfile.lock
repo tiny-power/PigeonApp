@@ -1,4 +1,20 @@
 PODS:
+  - Ads-CN-Beta/BUAdSDK (7.0.0.3)
+  - AnyThinkGDTSDKAdapter (6.4.91):
+    - AnyThinkiOS (= 6.4.91)
+    - GDTMobSDK (= 4.15.41)
+  - AnyThinkiOS (6.4.91):
+    - AnyThinkiOS/AnyThinkSDK (= 6.4.91)
+  - AnyThinkiOS/AnyThinkSDK (6.4.91)
+  - AnyThinkKuaiShouSDKAdapter (6.4.91):
+    - AnyThinkiOS (= 6.4.91)
+    - KSAdSDK (= 4.6.30.1)
+  - AnyThinkSigmobSDKAdapter (6.4.91):
+    - AnyThinkiOS (= 6.4.91)
+    - SigmobAd-iOS (= 4.20.0)
+  - AnyThinkTTSDKAdapter (6.4.91):
+    - Ads-CN-Beta/BUAdSDK (= 7.0.0.3)
+    - AnyThinkiOS (= 6.4.91)
   - boost (1.83.0)
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.73.11)
@@ -10,11 +26,14 @@ PODS:
     - React-jsi (= 0.73.11)
     - ReactCommon/turbomodule/core (= 0.73.11)
   - fmt (6.2.1)
+  - GDTMobSDK (4.15.41)
   - glog (0.3.5)
   - hermes-engine (0.73.11):
     - hermes-engine/Pre-built (= 0.73.11)
   - hermes-engine/Pre-built (0.73.11)
+  - KSAdSDK (4.6.30.1)
   - libevent (2.1.12)
+  - Masonry (1.1.0)
   - RCT-Folly (2022.05.16.00):
     - boost
     - DoubleConversion
@@ -1069,11 +1088,19 @@ PODS:
     - React-RCTImage
   - RNSVG (15.1.0):
     - React-Core
+  - SigmobAd-iOS (4.20.0):
+    - SigmobAd-iOS/WindSDK (= 4.20.0)
+  - SigmobAd-iOS/WindSDK (4.20.0)
   - SocketRocket (0.6.1)
   - Toast (4.0.0)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
+  - AnyThinkGDTSDKAdapter (= 6.4.91)
+  - AnyThinkiOS (= 6.4.91)
+  - AnyThinkKuaiShouSDKAdapter (= 6.4.91)
+  - AnyThinkSigmobSDKAdapter (= 6.4.91)
+  - AnyThinkTTSDKAdapter (= 6.4.91)
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
@@ -1081,6 +1108,7 @@ DEPENDENCIES:
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - hermes-engine (from `../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)
   - libevent (~> 2.1.12)
+  - Masonry
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCT-Folly/Fabric (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
@@ -1134,8 +1162,18 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Ads-CN-Beta
+    - AnyThinkGDTSDKAdapter
+    - AnyThinkiOS
+    - AnyThinkKuaiShouSDKAdapter
+    - AnyThinkSigmobSDKAdapter
+    - AnyThinkTTSDKAdapter
     - fmt
+    - GDTMobSDK
+    - KSAdSDK
     - libevent
+    - Masonry
+    - SigmobAd-iOS
     - SocketRocket
     - Toast
 
@@ -1251,14 +1289,23 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  Ads-CN-Beta: 7334871e1c0bae9b0dad5f4051b4184ae336a224
+  AnyThinkGDTSDKAdapter: 87ed29a699c7809e7973c2dfdfd81e73ca2c6a92
+  AnyThinkiOS: 7c3f738c36842dc3d19d13e7cc9a1437f533c5b9
+  AnyThinkKuaiShouSDKAdapter: 5bc4b10c5ad22647a81ed2e0ae1aac585227e957
+  AnyThinkSigmobSDKAdapter: 73d960c9f29823aa0eb4d81d46dfca8406c13fa5
+  AnyThinkTTSDKAdapter: 853b9e446c686448d3fa31665fb20e8c9aab4c0b
   boost: d3f49c53809116a5d38da093a8aa78bf551aed09
   DoubleConversion: fea03f2699887d960129cc54bba7e52542b6f953
   FBLazyVector: b46891061bfe0a9b07f601813114c8653a72a45c
   FBReactNativeSpec: 9a01850c21d81027fa7b20b9dcc25d9bfae083da
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
+  GDTMobSDK: d549f5d0c06c2534dbce08cfb21e2266975b7f5a
   glog: c5d68082e772fa1c511173d6b30a9de2c05a69a2
   hermes-engine: d992945b77c506e5164e6a9a77510c9d57472c59
+  KSAdSDK: 15d8613714c8f1728b0bd6d461a3d7e316e61982
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   RCT-Folly: 7169b2b1c44399c76a47b5deaaba715eeeb476c0
   RCTRequired: 415e56f7c33799a6483e41e4dce607f3daf1e69b
   RCTTypeSafety: e984a88e713281c2d8c2309a1a6d2775af0107ae
@@ -1306,10 +1353,11 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: 23e56519cc41d3bade3c8d4479f7760cb1c11996
   RNScreens: 6225b1182ac2845b78e7446b0573ea2afb703338
   RNSVG: 50cf2c7018e57cf5d3522d98d0a3a4dd6bf9d093
+  SigmobAd-iOS: 43cab863c64ddc297c9dee16140442cb9bacca99
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   Yoga: 1f93d5925ea12fb0880b21efe3566677337cf2ed
 
-PODFILE CHECKSUM: 047b055ddb7e2a537e92421f42d93de36b0480b0
+PODFILE CHECKSUM: 34b008e15315d64e38cabad637a341e1302c4442
 
 COCOAPODS: 1.16.2

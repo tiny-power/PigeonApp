@@ -1,9 +1,31 @@
 import React, { useState, useEffect } from 'react'
-import { View, StyleSheet, Pressable, Text, FlatList } from 'react-native'
+import {
+    View,
+    StyleSheet,
+    Pressable,
+    Text,
+    FlatList,
+    NativeModules,
+    NativeEventEmitter,
+    requireNativeComponent
+} from 'react-native'
 import Svg from '../widget/Svg'
+
+const RewardedVC = NativeModules.RewardedVC
+const InterstitialVC = NativeModules.InterstitialVC
+//const BannerVC = NativeModules.BannerVC
+const NativeVCContainer = requireNativeComponent('NativeVCContainer')
+// const eventEmitter = new NativeEventEmitter(RewardedVC)
 
 const Home = ({ navigation }) => {
     const [profiles, setProfiles] = useState([])
+
+    // useEffect(() => {
+    //     const subscription = eventEmitter.addListener('wert', event => {
+    //         console.log(event)
+    //     })
+    //     return () => subscription.remove()
+    // }, [])
 
     useEffect(() => {
         fetchData()
@@ -37,7 +59,15 @@ const Home = ({ navigation }) => {
     }, [profiles])
 
     const handlePress = () => {
-        navigation.navigate('newServer')
+        //RewardedVC.showAd()
+        //BannerVC.showAd()
+        // try {
+        //     const eventId = await RewardedVC.testPrint('asd')
+        //     console.log(`Created a new event with id ${eventId}`)
+        // } catch (e) {
+        //     console.error(e)
+        // }
+        //navigation.navigate('newServer')
     }
 
     const deleteProfile = async index => {
@@ -93,6 +123,7 @@ const Home = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
+            <NativeVCContainer style={{ width: '100%', height: 300 }} />
             {profiles.length > 0 ? (
                 <FlatList
                     data={profiles}

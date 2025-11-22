@@ -12,10 +12,20 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		17744C742EC6C22400D9CB5F /* RewardedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 17744C732EC6C22400D9CB5F /* RewardedVC.m */; };
+		17758D6A2ECC567E00576498 /* AdSDKManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 17758D692ECC567E00576498 /* AdSDKManager.m */; };
+		17758D6D2ECC573300576498 /* LaunchLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17758D6C2ECC573300576498 /* LaunchLoadingView.m */; };
+		17758D702ECC584700576498 /* AdLoadConfigTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 17758D6F2ECC584700576498 /* AdLoadConfigTool.m */; };
+		17758D732ECC58AA00576498 /* SDKGlobalConfigTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 17758D722ECC58AA00576498 /* SDKGlobalConfigTool.m */; };
+		17758D762ECC5B5000576498 /* PPVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 17758D752ECC5B5000576498 /* PPVC.m */; };
+		17758D792ECC68A400576498 /* InterstitialVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 17758D782ECC68A400576498 /* InterstitialVC.m */; };
+		178296372ED18DCE0073F453 /* NativeVCContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 178296362ED18DCE0073F453 /* NativeVCContainer.m */; };
+		1782963A2ED18EA60073F453 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178296392ED18EA60073F453 /* MyViewController.m */; };
 		17BD85F72EB3523E006377CB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17BD85F62EB3523E006377CB /* Launch Screen.storyboard */; };
+		17C63AA12ED006A900B251D3 /* BannerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C63AA02ED006A900B251D3 /* BannerVC.m */; };
+		17C63AAD2ED0473C00B251D3 /* NativeVCContainerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C63AAC2ED0473C00B251D3 /* NativeVCContainerManager.m */; };
 		6132EF182BDFF13200BBE14D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 6132EF172BDFF13200BBE14D /* PrivacyInfo.xcprivacy */; };
 		7699B88040F8A987B510C191 /* libPods-PigeonApp-PigeonAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-PigeonApp-PigeonAppTests.a */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,14 +48,34 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = PigeonApp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PigeonApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = PigeonApp/main.m; sourceTree = "<group>"; };
+		17744C722EC6C22400D9CB5F /* RewardedVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RewardedVC.h; sourceTree = "<group>"; };
+		17744C732EC6C22400D9CB5F /* RewardedVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RewardedVC.m; sourceTree = "<group>"; };
+		17758D682ECC567E00576498 /* AdSDKManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdSDKManager.h; sourceTree = "<group>"; };
+		17758D692ECC567E00576498 /* AdSDKManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdSDKManager.m; sourceTree = "<group>"; };
+		17758D6B2ECC573300576498 /* LaunchLoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaunchLoadingView.h; sourceTree = "<group>"; };
+		17758D6C2ECC573300576498 /* LaunchLoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LaunchLoadingView.m; sourceTree = "<group>"; };
+		17758D6E2ECC584700576498 /* AdLoadConfigTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdLoadConfigTool.h; sourceTree = "<group>"; };
+		17758D6F2ECC584700576498 /* AdLoadConfigTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdLoadConfigTool.m; sourceTree = "<group>"; };
+		17758D712ECC58AA00576498 /* SDKGlobalConfigTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDKGlobalConfigTool.h; sourceTree = "<group>"; };
+		17758D722ECC58AA00576498 /* SDKGlobalConfigTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDKGlobalConfigTool.m; sourceTree = "<group>"; };
+		17758D742ECC5B5000576498 /* PPVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPVC.h; sourceTree = "<group>"; };
+		17758D752ECC5B5000576498 /* PPVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPVC.m; sourceTree = "<group>"; };
+		17758D772ECC68A400576498 /* InterstitialVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterstitialVC.h; sourceTree = "<group>"; };
+		17758D782ECC68A400576498 /* InterstitialVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterstitialVC.m; sourceTree = "<group>"; };
+		178296352ED18DCE0073F453 /* NativeVCContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NativeVCContainer.h; sourceTree = "<group>"; };
+		178296362ED18DCE0073F453 /* NativeVCContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NativeVCContainer.m; sourceTree = "<group>"; };
+		178296382ED18EA60073F453 /* MyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
+		178296392ED18EA60073F453 /* MyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
 		17BD85F62EB3523E006377CB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		17C63A9F2ED006A900B251D3 /* BannerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannerVC.h; sourceTree = "<group>"; };
+		17C63AA02ED006A900B251D3 /* BannerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerVC.m; sourceTree = "<group>"; };
+		17C63AAC2ED0473C00B251D3 /* NativeVCContainerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NativeVCContainerManager.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-PigeonApp-PigeonAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PigeonApp-PigeonAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4392A12AC88292D35C810B /* Pods-PigeonApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PigeonApp.debug.xcconfig"; path = "Target Support Files/Pods-PigeonApp/Pods-PigeonApp.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-PigeonApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PigeonApp.release.xcconfig"; path = "Target Support Files/Pods-PigeonApp/Pods-PigeonApp.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-PigeonApp-PigeonAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PigeonApp-PigeonAppTests.debug.xcconfig"; path = "Target Support Files/Pods-PigeonApp-PigeonAppTests/Pods-PigeonApp-PigeonAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-PigeonApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PigeonApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6132EF172BDFF13200BBE14D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = PigeonApp/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = PigeonApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-PigeonApp-PigeonAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PigeonApp-PigeonAppTests.release.xcconfig"; path = "Target Support Files/Pods-PigeonApp-PigeonAppTests/Pods-PigeonApp-PigeonAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -90,14 +120,115 @@
 		13B07FAE1A68108700A75B9A /* PigeonApp */ = {
 			isa = PBXGroup;
 			children = (
+				178296342ED16D110073F453 /* Ad */,
+				17BD85F62EB3523E006377CB /* Launch Screen.storyboard */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				17C63AAC2ED0473C00B251D3 /* NativeVCContainerManager.m */,
+				178296352ED18DCE0073F453 /* NativeVCContainer.h */,
+				178296362ED18DCE0073F453 /* NativeVCContainer.m */,
+				178296382ED18EA60073F453 /* MyViewController.h */,
+				178296392ED18EA60073F453 /* MyViewController.m */,
 			);
 			name = PigeonApp;
+			sourceTree = "<group>";
+		};
+		178296292ED168080073F453 /* Rewarded */ = {
+			isa = PBXGroup;
+			children = (
+				17744C722EC6C22400D9CB5F /* RewardedVC.h */,
+				17744C732EC6C22400D9CB5F /* RewardedVC.m */,
+			);
+			path = Rewarded;
+			sourceTree = "<group>";
+		};
+		1782962A2ED168280073F453 /* Interstitial */ = {
+			isa = PBXGroup;
+			children = (
+				17758D772ECC68A400576498 /* InterstitialVC.h */,
+				17758D782ECC68A400576498 /* InterstitialVC.m */,
+			);
+			path = Interstitial;
+			sourceTree = "<group>";
+		};
+		1782962C2ED169030073F453 /* Tools&Manager */ = {
+			isa = PBXGroup;
+			children = (
+				1782962F2ED169ED0073F453 /* SDKGlobalConfig */,
+				1782962E2ED169D40073F453 /* AdLoadConfig */,
+				17758D682ECC567E00576498 /* AdSDKManager.h */,
+				17758D692ECC567E00576498 /* AdSDKManager.m */,
+			);
+			path = "Tools&Manager";
+			sourceTree = "<group>";
+		};
+		1782962D2ED1696F0073F453 /* Banner */ = {
+			isa = PBXGroup;
+			children = (
+				17C63A9F2ED006A900B251D3 /* BannerVC.h */,
+				17C63AA02ED006A900B251D3 /* BannerVC.m */,
+			);
+			path = Banner;
+			sourceTree = "<group>";
+		};
+		1782962E2ED169D40073F453 /* AdLoadConfig */ = {
+			isa = PBXGroup;
+			children = (
+				17758D6E2ECC584700576498 /* AdLoadConfigTool.h */,
+				17758D6F2ECC584700576498 /* AdLoadConfigTool.m */,
+			);
+			path = AdLoadConfig;
+			sourceTree = "<group>";
+		};
+		1782962F2ED169ED0073F453 /* SDKGlobalConfig */ = {
+			isa = PBXGroup;
+			children = (
+				17758D712ECC58AA00576498 /* SDKGlobalConfigTool.h */,
+				17758D722ECC58AA00576498 /* SDKGlobalConfigTool.m */,
+			);
+			path = SDKGlobalConfig;
+			sourceTree = "<group>";
+		};
+		178296302ED16A7F0073F453 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				178296322ED16AB10073F453 /* Controller */,
+				178296312ED16A8F0073F453 /* Widget */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		178296312ED16A8F0073F453 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				17758D6B2ECC573300576498 /* LaunchLoadingView.h */,
+				17758D6C2ECC573300576498 /* LaunchLoadingView.m */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		178296322ED16AB10073F453 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				17758D742ECC5B5000576498 /* PPVC.h */,
+				17758D752ECC5B5000576498 /* PPVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		178296342ED16D110073F453 /* Ad */ = {
+			isa = PBXGroup;
+			children = (
+				178296302ED16A7F0073F453 /* Others */,
+				1782962D2ED1696F0073F453 /* Banner */,
+				1782962C2ED169030073F453 /* Tools&Manager */,
+				1782962A2ED168280073F453 /* Interstitial */,
+				178296292ED168080073F453 /* Rewarded */,
+			);
+			name = Ad;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -120,7 +251,6 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				17BD85F62EB3523E006377CB /* Launch Screen.storyboard */,
 				6132EF172BDFF13200BBE14D /* PrivacyInfo.xcprivacy */,
 				13B07FAE1A68108700A75B9A /* PigeonApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -248,7 +378,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6132EF182BDFF13200BBE14D /* PrivacyInfo.xcprivacy in Resources */,
-				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				17BD85F72EB3523E006377CB /* Launch Screen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
@@ -400,8 +529,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17C63AAD2ED0473C00B251D3 /* NativeVCContainerManager.m in Sources */,
+				178296372ED18DCE0073F453 /* NativeVCContainer.m in Sources */,
+				17758D702ECC584700576498 /* AdLoadConfigTool.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				17C63AA12ED006A900B251D3 /* BannerVC.m in Sources */,
+				17758D762ECC5B5000576498 /* PPVC.m in Sources */,
+				17758D6D2ECC573300576498 /* LaunchLoadingView.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				17744C742EC6C22400D9CB5F /* RewardedVC.m in Sources */,
+				17758D792ECC68A400576498 /* InterstitialVC.m in Sources */,
+				17758D732ECC58AA00576498 /* SDKGlobalConfigTool.m in Sources */,
+				17758D6A2ECC567E00576498 /* AdSDKManager.m in Sources */,
+				1782963A2ED18EA60073F453 /* MyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,7 +623,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -513,7 +653,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -597,10 +737,7 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -669,10 +806,7 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;

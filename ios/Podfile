@@ -45,6 +45,7 @@ target 'PigeonApp' do
   pod 'AnyThinkTTSDKAdapter','6.4.91'
   pod 'AnyThinkGDTSDKAdapter','6.4.91'
   pod 'Masonry'
+  pod 'SDWebImage'
 
   target 'PigeonAppTests' do
     inherit! :complete

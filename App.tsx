@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
-import { StatusBar, Dimensions, View, Text, Pressable, Button } from 'react-native'
+import { StatusBar, Dimensions, View, Text, Pressable, Button, NativeModules } from 'react-native'
+
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
@@ -25,9 +26,12 @@ global.Toast = Toast
 
 const Stack = createNativeStackNavigator()
 
+const { SplashVC } = NativeModules
+
 const App = ({}) => {
     useEffect(() => {
         SplashScreen.hide()
+        SplashVC.showSplash()
     }, [])
 
     return (

@@ -24,6 +24,12 @@
 		17BD85F72EB3523E006377CB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17BD85F62EB3523E006377CB /* Launch Screen.storyboard */; };
 		17C63AA12ED006A900B251D3 /* BannerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C63AA02ED006A900B251D3 /* BannerVC.m */; };
 		17C63AAD2ED0473C00B251D3 /* NativeVCContainerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C63AAC2ED0473C00B251D3 /* NativeVCContainerManager.m */; };
+		17F4F23D2ED294190071F654 /* SelfRenderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F4F23C2ED294190071F654 /* SelfRenderVC.m */; };
+		17F4F2412ED2984C0071F654 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F4F2402ED2984C0071F654 /* Tools.m */; };
+		17F4F2452ED298B40071F654 /* SelfRenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F4F2442ED298B40071F654 /* SelfRenderView.m */; };
+		17F4F2492ED29E730071F654 /* SplashVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F4F2482ED29E730071F654 /* SplashVC.m */; };
+		17FEF5D82ED1938100D1E63C /* ExpressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FEF5D72ED1938100D1E63C /* ExpressVC.m */; };
+		17FEF5DB2ED196D000D1E63C /* AdDisplayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FEF5DA2ED196D000D1E63C /* AdDisplayVC.m */; };
 		6132EF182BDFF13200BBE14D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 6132EF172BDFF13200BBE14D /* PrivacyInfo.xcprivacy */; };
 		7699B88040F8A987B510C191 /* libPods-PigeonApp-PigeonAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-PigeonApp-PigeonAppTests.a */; };
 /* End PBXBuildFile section */
@@ -70,6 +76,18 @@
 		17C63A9F2ED006A900B251D3 /* BannerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannerVC.h; sourceTree = "<group>"; };
 		17C63AA02ED006A900B251D3 /* BannerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerVC.m; sourceTree = "<group>"; };
 		17C63AAC2ED0473C00B251D3 /* NativeVCContainerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NativeVCContainerManager.m; sourceTree = "<group>"; };
+		17F4F23B2ED294190071F654 /* SelfRenderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelfRenderVC.h; sourceTree = "<group>"; };
+		17F4F23C2ED294190071F654 /* SelfRenderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelfRenderVC.m; sourceTree = "<group>"; };
+		17F4F23F2ED2984C0071F654 /* Tools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tools.h; sourceTree = "<group>"; };
+		17F4F2402ED2984C0071F654 /* Tools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tools.m; sourceTree = "<group>"; };
+		17F4F2432ED298B40071F654 /* SelfRenderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelfRenderView.h; sourceTree = "<group>"; };
+		17F4F2442ED298B40071F654 /* SelfRenderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelfRenderView.m; sourceTree = "<group>"; };
+		17F4F2472ED29E730071F654 /* SplashVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SplashVC.h; sourceTree = "<group>"; };
+		17F4F2482ED29E730071F654 /* SplashVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SplashVC.m; sourceTree = "<group>"; };
+		17FEF5D62ED1938100D1E63C /* ExpressVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExpressVC.h; sourceTree = "<group>"; };
+		17FEF5D72ED1938100D1E63C /* ExpressVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExpressVC.m; sourceTree = "<group>"; };
+		17FEF5D92ED196D000D1E63C /* AdDisplayVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdDisplayVC.h; sourceTree = "<group>"; };
+		17FEF5DA2ED196D000D1E63C /* AdDisplayVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdDisplayVC.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-PigeonApp-PigeonAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PigeonApp-PigeonAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4392A12AC88292D35C810B /* Pods-PigeonApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PigeonApp.debug.xcconfig"; path = "Target Support Files/Pods-PigeonApp/Pods-PigeonApp.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-PigeonApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PigeonApp.release.xcconfig"; path = "Target Support Files/Pods-PigeonApp/Pods-PigeonApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -195,6 +213,7 @@
 		178296302ED16A7F0073F453 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				17F4F23E2ED298380071F654 /* Tools */,
 				178296322ED16AB10073F453 /* Controller */,
 				178296312ED16A8F0073F453 /* Widget */,
 			);
@@ -222,6 +241,8 @@
 		178296342ED16D110073F453 /* Ad */ = {
 			isa = PBXGroup;
 			children = (
+				17F4F2462ED29E5A0071F654 /* Splash */,
+				1782963B2ED191A10073F453 /* Native */,
 				178296302ED16A7F0073F453 /* Others */,
 				1782962D2ED1696F0073F453 /* Banner */,
 				1782962C2ED169030073F453 /* Tools&Manager */,
@@ -229,6 +250,87 @@
 				178296292ED168080073F453 /* Rewarded */,
 			);
 			name = Ad;
+			sourceTree = "<group>";
+		};
+		1782963B2ED191A10073F453 /* Native */ = {
+			isa = PBXGroup;
+			children = (
+				17F4F2422ED298A20071F654 /* SelfRenderView */,
+				17F4F23A2ED293CE0071F654 /* SingleSelfRender */,
+				17FEF5D52ED1935700D1E63C /* SingleExpress */,
+				17FEF5D12ED192F000D1E63C /* Feed(Template) */,
+				17FEF5CD2ED1929E00D1E63C /* Feed(SelfRender) */,
+				1782963C2ED191B40073F453 /* AdDisplayVC */,
+			);
+			path = Native;
+			sourceTree = "<group>";
+		};
+		1782963C2ED191B40073F453 /* AdDisplayVC */ = {
+			isa = PBXGroup;
+			children = (
+				17FEF5D92ED196D000D1E63C /* AdDisplayVC.h */,
+				17FEF5DA2ED196D000D1E63C /* AdDisplayVC.m */,
+			);
+			path = AdDisplayVC;
+			sourceTree = "<group>";
+		};
+		17F4F23A2ED293CE0071F654 /* SingleSelfRender */ = {
+			isa = PBXGroup;
+			children = (
+				17F4F23B2ED294190071F654 /* SelfRenderVC.h */,
+				17F4F23C2ED294190071F654 /* SelfRenderVC.m */,
+			);
+			path = SingleSelfRender;
+			sourceTree = "<group>";
+		};
+		17F4F23E2ED298380071F654 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				17F4F23F2ED2984C0071F654 /* Tools.h */,
+				17F4F2402ED2984C0071F654 /* Tools.m */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		17F4F2422ED298A20071F654 /* SelfRenderView */ = {
+			isa = PBXGroup;
+			children = (
+				17F4F2432ED298B40071F654 /* SelfRenderView.h */,
+				17F4F2442ED298B40071F654 /* SelfRenderView.m */,
+			);
+			path = SelfRenderView;
+			sourceTree = "<group>";
+		};
+		17F4F2462ED29E5A0071F654 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				17F4F2472ED29E730071F654 /* SplashVC.h */,
+				17F4F2482ED29E730071F654 /* SplashVC.m */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		17FEF5CD2ED1929E00D1E63C /* Feed(SelfRender) */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Feed(SelfRender)";
+			sourceTree = "<group>";
+		};
+		17FEF5D12ED192F000D1E63C /* Feed(Template) */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Feed(Template)";
+			sourceTree = "<group>";
+		};
+		17FEF5D52ED1935700D1E63C /* SingleExpress */ = {
+			isa = PBXGroup;
+			children = (
+				17FEF5D62ED1938100D1E63C /* ExpressVC.h */,
+				17FEF5D72ED1938100D1E63C /* ExpressVC.m */,
+			);
+			path = SingleExpress;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -537,9 +639,15 @@
 				17758D762ECC5B5000576498 /* PPVC.m in Sources */,
 				17758D6D2ECC573300576498 /* LaunchLoadingView.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				17F4F2452ED298B40071F654 /* SelfRenderView.m in Sources */,
 				17744C742EC6C22400D9CB5F /* RewardedVC.m in Sources */,
+				17FEF5DB2ED196D000D1E63C /* AdDisplayVC.m in Sources */,
 				17758D792ECC68A400576498 /* InterstitialVC.m in Sources */,
+				17F4F2412ED2984C0071F654 /* Tools.m in Sources */,
 				17758D732ECC58AA00576498 /* SDKGlobalConfigTool.m in Sources */,
+				17F4F23D2ED294190071F654 /* SelfRenderVC.m in Sources */,
+				17F4F2492ED29E730071F654 /* SplashVC.m in Sources */,
+				17FEF5D82ED1938100D1E63C /* ExpressVC.m in Sources */,
 				17758D6A2ECC567E00576498 /* AdSDKManager.m in Sources */,
 				1782963A2ED18EA60073F453 /* MyViewController.m in Sources */,
 			);

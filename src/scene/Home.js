@@ -11,8 +11,8 @@ import {
 } from 'react-native'
 import Svg from '../widget/Svg'
 
-const RewardedVC = NativeModules.RewardedVC
-const InterstitialVC = NativeModules.InterstitialVC
+const { RewardedVC, InterstitialVC, ExpressVC, SelfRenderVC, SplashVC } = NativeModules
+
 //const BannerVC = NativeModules.BannerVC
 const NativeVCContainer = requireNativeComponent('NativeVCContainer')
 // const eventEmitter = new NativeEventEmitter(RewardedVC)
@@ -60,6 +60,8 @@ const Home = ({ navigation }) => {
 
     const handlePress = () => {
         //RewardedVC.showAd()
+        //SelfRenderVC.showAd()
+        SplashVC.showSplash()
         //BannerVC.showAd()
         // try {
         //     const eventId = await RewardedVC.testPrint('asd')

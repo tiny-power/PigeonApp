@@ -61,7 +61,7 @@ const Home = ({ navigation }) => {
     const handlePress = () => {
         //RewardedVC.showAd()
         //SelfRenderVC.showAd()
-        SplashVC.showSplash()
+        //SplashVC.showSplash()
         //BannerVC.showAd()
         // try {
         //     const eventId = await RewardedVC.testPrint('asd')
@@ -69,7 +69,7 @@ const Home = ({ navigation }) => {
         // } catch (e) {
         //     console.error(e)
         // }
-        //navigation.navigate('newServer')
+        navigation.navigate('newServer')
     }
 
     const deleteProfile = async index => {

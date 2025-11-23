@@ -1,9 +1,11 @@
-import { Text, View, StyleSheet, Pressable, TextInput, Switch } from 'react-native'
+import { Text, View, StyleSheet, Pressable, TextInput, Switch, NativeModules } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import SelectDialog from './selectDialog'
 import Svg from '../widget/Svg'
 import AWS from 'aws-sdk'
 import Schema from 'async-validator'
+
+const { RewardedVC, InterstitialVC } = NativeModules
 
 const NewServer = ({ navigation }) => {
     const [type, setType] = useState('')
@@ -24,6 +26,10 @@ const NewServer = ({ navigation }) => {
     ])
     const [selectshow, setSelectshow] = React.useState(false)
     const [createFlag, setCreateFlag] = React.useState(false)
+
+    useEffect(() => {
+        InterstitialVC.showAd()
+    }, [])
 
     useEffect(() => {
         if (type === 'Amazon S3') {

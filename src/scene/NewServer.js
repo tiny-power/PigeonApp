@@ -5,7 +5,7 @@ import Svg from '../widget/Svg'
 import AWS from 'aws-sdk'
 import Schema from 'async-validator'
 
-const { RewardedVC, InterstitialVC } = NativeModules
+const { InterstitialVC } = NativeModules
 
 const NewServer = ({ navigation }) => {
     const [type, setType] = useState('')

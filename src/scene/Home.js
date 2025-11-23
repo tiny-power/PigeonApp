@@ -1,31 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import {
-    View,
-    StyleSheet,
-    Pressable,
-    Text,
-    FlatList,
-    NativeModules,
-    NativeEventEmitter,
-    requireNativeComponent
-} from 'react-native'
+import { View, StyleSheet, Pressable, Text, FlatList, NativeModules, requireNativeComponent } from 'react-native'
 import Svg from '../widget/Svg'
 
-const { RewardedVC, InterstitialVC, ExpressVC, SelfRenderVC, SplashVC } = NativeModules
+const { RewardedVC, ExpressVC, SelfRenderVC } = NativeModules
 
-//const BannerVC = NativeModules.BannerVC
 const NativeVCContainer = requireNativeComponent('NativeVCContainer')
-// const eventEmitter = new NativeEventEmitter(RewardedVC)
 
 const Home = ({ navigation }) => {
     const [profiles, setProfiles] = useState([])
-
-    // useEffect(() => {
-    //     const subscription = eventEmitter.addListener('wert', event => {
-    //         console.log(event)
-    //     })
-    //     return () => subscription.remove()
-    // }, [])
 
     useEffect(() => {
         fetchData()
@@ -59,16 +41,6 @@ const Home = ({ navigation }) => {
     }, [profiles])
 
     const handlePress = () => {
-        //RewardedVC.showAd()
-        //SelfRenderVC.showAd()
-        //SplashVC.showSplash()
-        //BannerVC.showAd()
-        // try {
-        //     const eventId = await RewardedVC.testPrint('asd')
-        //     console.log(`Created a new event with id ${eventId}`)
-        // } catch (e) {
-        //     console.error(e)
-        // }
         navigation.navigate('newServer')
     }
 
@@ -79,6 +51,7 @@ const Home = ({ navigation }) => {
     }
 
     const listBuckets = item => {
+        RewardedVC.showAd()
         navigation.push('listBuckets', item)
     }
 
@@ -125,7 +98,7 @@ const Home = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <NativeVCContainer style={{ width: '100%', height: 300 }} />
+            {/* <NativeVCContainer style={{ width: '100%', height: 300 }} /> */}
             {profiles.length > 0 ? (
                 <FlatList
                     data={profiles}

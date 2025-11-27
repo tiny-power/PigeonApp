@@ -17,6 +17,7 @@ import TabNavigator from './src/scene/TabNavigator'
 import NewServer from './src/scene/NewServer'
 import ListBuckets from './src/scene/ListBuckets'
 import ListObjects from './src/scene/ListObjects'
+import Rewarded from './src/scene/Rewarded'
 
 global.axios = axios
 global.localStorage = localStorage
@@ -81,6 +82,19 @@ const App = ({}) => {
                     component={ListObjects}
                     options={() => ({
                         headerTitle: 'Objects',
+                        headerTintColor: '#171717',
+                        headerStyle: {
+                            backgroundColor: '#FFFFFF'
+                        },
+                        headerShadowVisible: false,
+                        headerBackButtonDisplayMode: 'minimal'
+                    })}
+                />
+                <Stack.Screen
+                    name="rewarded"
+                    component={Rewarded}
+                    options={() => ({
+                        headerTitle: '操作日记',
                         headerTintColor: '#171717',
                         headerStyle: {
                             backgroundColor: '#FFFFFF'

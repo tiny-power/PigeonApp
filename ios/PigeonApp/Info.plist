@@ -27,7 +27,7 @@
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
-		<false/>
+		<true/>
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
@@ -539,5 +539,7 @@
 		<string>alipays</string>
 		<string>youku</string>
 	</array>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>此处修改为您希望用户看到的权限请求描述，可本地化</string>
 </dict>
 </plist>

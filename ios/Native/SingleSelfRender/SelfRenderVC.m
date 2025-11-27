@@ -19,8 +19,6 @@
 
 @implementation SelfRenderVC
 
-RCT_EXPORT_MODULE()
-
 //广告位ID
 #define Native_SelfRender_PlacementID @"b6913031af3c2c"
 
@@ -31,7 +29,7 @@ RCT_EXPORT_MODULE()
  
 #pragma mark - Load Ad 加载广告
 /// 加载广告
-RCT_EXPORT_METHOD(loadAd) {
+-(void)loadAd {
  
     NSLog(@"点击了加载广告");
      
@@ -47,11 +45,26 @@ RCT_EXPORT_METHOD(loadAd) {
   
     [[ATAdManager sharedManager] loadADWithPlacementID:Native_SelfRender_PlacementID extra:loadConfigDict delegate:self];
 }
+
+- (instancetype)init
+{
+  self = [super init];
+  if (self) {
+    [self showAd];
+  }
+  return self;
+}
  
 #pragma mark - Show Ad 展示广告
 /// 展示广告
-RCT_EXPORT_METHOD(showAd) {
+-(void)showAd {
   dispatch_async(dispatch_get_main_queue(), ^{
+    self.view.backgroundColor = [UIColor colorWithRed:0.2 green:0.4 blue:0.9 alpha:1];
+
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+    label.text = @"这是 Objective-C 原生123";
+    label.textColor = UIColor.whiteColor;
+    [self.view addSubview:label];
     //场景统计功能，可选接入
     [[ATAdManager sharedManager] entryNativeScenarioWithPlacementID:Native_SelfRender_PlacementID scene:Native_SelfRender_SceneID];
     

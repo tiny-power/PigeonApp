@@ -3,5 +3,6 @@
 #import <React/RCTEventEmitter.h>
 #import <AnyThinkBanner/AnyThinkBanner.h>
 
-@interface BannerVC : UIViewController <RCTBridgeModule>
+@interface BannerVC : UIViewController
+
 @end

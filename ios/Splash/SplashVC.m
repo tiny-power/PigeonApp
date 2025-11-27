@@ -131,7 +131,8 @@ RCT_EXPORT_METHOD(showSplash) {
 //    UIViewController *rootVC = [UIApplication sharedApplication].delegate.window.rootViewController;
 //    
     //展示广告,在App原window中展示
-    [[ATAdManager sharedManager] showSplashWithPlacementID:SplashPlacementID config:config window:[UIApplication sharedApplication].keyWindow inViewController:self.tabBarController extra:configDict delegate:self];
+    UIViewController *rootVC = [UIApplication sharedApplication].delegate.window.rootViewController;
+    [[ATAdManager sharedManager] showSplashWithPlacementID:SplashPlacementID config:config window:[UIApplication sharedApplication].delegate.window inViewController:rootVC extra:configDict delegate:self];
   });
 }
   

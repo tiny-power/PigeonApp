@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { View, StyleSheet, Pressable, Text, FlatList, NativeModules, requireNativeComponent } from 'react-native'
 import Svg from '../widget/Svg'
 
-const { RewardedVC, ExpressVC, SelfRenderVC } = NativeModules
+const { RewardedVC } = NativeModules
 
-const NativeVCContainer = requireNativeComponent('NativeVCContainer')
+const Banner = requireNativeComponent('Banner')
+const Express = requireNativeComponent('Express')
+const SelfRender = requireNativeComponent('SelfRender')
 
 const Home = ({ navigation }) => {
     const [profiles, setProfiles] = useState([])
@@ -41,7 +43,8 @@ const Home = ({ navigation }) => {
     }, [profiles])
 
     const handlePress = () => {
-        navigation.navigate('newServer')
+        RewardedVC.showAd()
+        //navigation.navigate('newServer')
     }
 
     const deleteProfile = async index => {
@@ -98,7 +101,9 @@ const Home = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            {/* <NativeVCContainer style={{ width: '100%', height: 300 }} /> */}
+            <Banner style={{ width: '100%', height: 50, position: 'fixed' }} />
+            <Express style={{ width: '100%', height: 50, backgroundColor: 'red' }} />
+            <SelfRender style={{ width: '100%', height: 50 }} />
             {profiles.length > 0 ? (
                 <FlatList
                     data={profiles}

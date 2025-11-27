@@ -9,9 +9,6 @@
 
 @implementation BannerVC
 
-  
-RCT_EXPORT_MODULE()
-
 //广告位ID
 #define BannerPlacementID @"b6913031c32bbf"
 
@@ -44,18 +41,31 @@ RCT_EXPORT_MODULE()
     //开始加载
     [[ATAdManager sharedManager] loadADWithPlacementID:BannerPlacementID extra:loadConfigDict delegate:self];
 }
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+  [self showAd];
+}
  
 #pragma mark - Show Ad 展示广告
 /// 展示广告
-RCT_EXPORT_METHOD(showAd) {
+- (void)showAd {
   dispatch_async(dispatch_get_main_queue(), ^{
     //场景统计功能，可选接入
-      [[ATAdManager sharedManager] entryBannerScenarioWithPlacementID:BannerPlacementID scene:BannerSceneID];
+    self.view.backgroundColor = [UIColor colorWithRed:0.2 green:0.4 blue:0.9 alpha:1];
+
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+    label.text = @"这是 Objective-C 原生 UIViewController";
+    label.textColor = UIColor.whiteColor;
+    [self.view addSubview:label];
+    NSLog(@"点击了加载广告showAd");
+//      [[ATAdManager sharedManager] entryBannerScenarioWithPlacementID:BannerPlacementID scene:BannerSceneID];
     //检查是否有就绪
     if (![[ATAdManager sharedManager] bannerAdReadyForPlacementID:BannerPlacementID]) {
       [self loadAd];
       return;
     }
+    NSLog(@"点击了加载广告showAd1");
     
     //展示配置，Scene传入后台的场景ID，没有可传入空字符串，showCustomExt参数可传入自定义参数字符串
     ATShowConfig *config = [[ATShowConfig alloc] initWithScene:BannerSceneID showCustomExt:@"testShowCustomExt"];
@@ -63,15 +73,25 @@ RCT_EXPORT_METHOD(showAd) {
     //展示广告
     ATBannerView *bannerView = [[ATAdManager sharedManager] retrieveBannerViewForPlacementID:BannerPlacementID config:config];
     //展示广告
+    NSLog(@"点击了加载广告showAd2");
       if (bannerView != nil) {
-                //赋值
-//         bannerView.delegate = self;
-//         bannerView.presentingViewController = self;
-//         bannerView.translatesAutoresizingMaskIntoConstraints = NO;
-//         bannerView.frame = CGRectMake(0, 0, 320, 50);
-//         [self.view addSubview:bannerView];
-//         self.bannerView = bannerView;
-//         [[UIApplication sharedApplication].delegate.window.rootViewController.view addSubview:bannerView];
+        NSLog(@"点击了加载广告showAd3");
+         //赋值
+         bannerView.delegate = self;
+         bannerView.presentingViewController = self;
+         bannerView.translatesAutoresizingMaskIntoConstraints = NO;
+         bannerView.frame = CGRectMake(0, 0, 320, 50);
+         [self.view addSubview:bannerView];
+         self.bannerView = bannerView;
+        self.view.backgroundColor = [UIColor colorWithRed:0.2 green:0.4 blue:0.9 alpha:1];
+
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 120, 250, 40)];
+        label.text = @"这是 Objective-C 原生 UIViewController";
+        label.textColor = UIColor.whiteColor;
+        [self.view addSubview:label];
+         [[UIApplication sharedApplication].delegate.window.rootViewController.view addSubview:bannerView];
+      } else {
+        NSLog(@"点击了加载广告showAd4");
       }
   });
 }

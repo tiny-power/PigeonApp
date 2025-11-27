@@ -3,5 +3,6 @@
 #import <React/RCTBridgeModule.h>
 #import <AnyThinkNative/AnyThinkNative.h>
 
-@interface SelfRenderVC : UIViewController <RCTBridgeModule>
+@interface SelfRenderVC : UIViewController
+
 @end

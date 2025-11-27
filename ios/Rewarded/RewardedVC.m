@@ -2,6 +2,12 @@
 #import <AnyThinkSDK/AnyThinkSDK.h>
 #import <AnyThinkRewardedVideo/AnyThinkRewardedVideo.h>
 
+@interface RewardedVC () <ATRewardedVideoDelegate>
+
+@property (nonatomic, assign) NSInteger retryAttempt;
+
+@end
+
 @implementation RewardedVC
 
   
@@ -31,6 +37,9 @@ RCT_EXPORT_METHOD(loadAd) {
     NSMutableDictionary * loadConfigDict = [NSMutableDictionary dictionary];
     // 可选接入，以下几个key参数适用于广告平台的服务端激励验证，将被透传
     [loadConfigDict setValue:@"media_val_RewardedVC" forKey:kATAdLoadingExtraMediaExtraKey];
+    NSUUID *uuid = [[UIDevice currentDevice] identifierForVendor];
+    NSString *uniqueIdentifier = uuid.UUIDString;
+    NSLog(@"uniqueIdentifier: %@", uniqueIdentifier);
     [loadConfigDict setValue:@"rv_test_user_id" forKey:kATAdLoadingExtraUserIDKey];
     [loadConfigDict setValue:@"reward_Name" forKey:kATAdLoadingExtraRewardNameKey];
     [loadConfigDict setValue:@3 forKey:kATAdLoadingExtraRewardAmountKey];

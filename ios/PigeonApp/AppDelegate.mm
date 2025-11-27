@@ -13,6 +13,12 @@
   // They will be passed down to the ViewController used by React Native.
   self.initialProps = @{};
   
+  //开启日志
+  [ATAPI setLogEnabled:YES];//Turn on debug logs
+
+  //开启日志后，调用检查集成情况方法
+  [ATAPI integrationChecking];
+  
   [[AdSDKManager sharedManager] initSDK];
  
   return [super application:application didFinishLaunchingWithOptions:launchOptions];

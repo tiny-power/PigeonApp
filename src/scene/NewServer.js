@@ -140,16 +140,6 @@ const NewServer = ({ navigation }) => {
             endpoint: url
         })
 
-        // let accessKeyId = 'AKIAYSE4N774P5KZTSZI'
-        // let secretAccessKey = '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'
-
-        // let s3 = new AWS.S3({
-        //     s3ForcePathStyle: pathStyle,
-        //     accessKeyId: accessKeyId,
-        //     secretAccessKey: secretAccessKey,
-        //     endpoint: url
-        // })
-
         s3.listBuckets({}, async (err, data) => {
             if (err) {
                 Toast.show(err.toString())

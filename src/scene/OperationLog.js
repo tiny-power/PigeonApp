@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { View, StyleSheet, Text, FlatList, Pressable } from 'react-native'
+import { View, StyleSheet, Text, FlatList, Pressable, NativeModules, NativeEventEmitter } from 'react-native'
 import Svg from '../widget/Svg'
+import dayjs from 'dayjs'
+
+const { RewardedVC } = NativeModules
+
+const eventEmitter = new NativeEventEmitter(RewardedVC)
 
 const Home = ({ navigation }) => {
-    const [userId, setUserId] = useState()
+    const [userId, setUserId] = useState('')
     const [rewardeds, setRewardeds] = useState([])
+    const [flag, setFlag] = useState('')
 
     useEffect(() => {
         navigation.setOptions({
@@ -18,11 +24,24 @@ const Home = ({ navigation }) => {
                 </Pressable>
             )
         })
+        const subscription = eventEmitter.addListener('rewarded', async event => {
+            await localStorage.setItem('uniqueID', event.idfv)
+            let rewardeds = await localStorage.getItem('rewardeds')
+            if (rewardeds != null) {
+                rewardeds = JSON.parse(rewardeds)
+            } else {
+                rewardeds = []
+            }
+            rewardeds.push(dayjs().format('YYYY-MM-DD HH:mm:ss'))
+            await localStorage.setItem('rewardeds', JSON.stringify(rewardeds))
+            setFlag(dayjs().format('YYYY-MM-DD HH:mm:ss'))
+        })
+        return () => subscription.remove()
     }, [])
 
     useEffect(() => {
         fetchData()
-    }, [navigation])
+    }, [flag])
 
     const fetchData = async () => {
         let uniqueID = await localStorage.getItem('uniqueID')

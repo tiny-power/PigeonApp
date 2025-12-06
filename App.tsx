@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { StatusBar, Dimensions, View, Text, Pressable, Button, NativeModules, NativeEventEmitter } from 'react-native'
+import { StatusBar, Dimensions, View, Text, Pressable, Button, NativeModules } from 'react-native'
 
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
@@ -11,7 +11,6 @@ import axios from './src/utils/axios'
 import localStorage from './src/utils/localStorage'
 
 import Svg from './src/widget/Svg'
-import dayjs from 'dayjs'
 
 import Home from './src/scene/Home'
 import TabNavigator from './src/scene/TabNavigator'
@@ -30,8 +29,6 @@ const Stack = createNativeStackNavigator()
 
 const { SplashVC, BannerVC, SelfRenderVC, InterstitialVC, RewardedVC } = NativeModules
 
-const eventEmitter = new NativeEventEmitter(RewardedVC)
-
 const App = ({}) => {
     useEffect(() => {
         SplashScreen.hide()
@@ -40,19 +37,6 @@ const App = ({}) => {
         SelfRenderVC.loadAd()
         InterstitialVC.loadAd()
         RewardedVC.loadAd()
-
-        const subscription = eventEmitter.addListener('rewarded', async event => {
-            await localStorage.setItem('uniqueID', event.idfv)
-            let rewardeds = await localStorage.getItem('rewardeds')
-            if (rewardeds != null) {
-                rewardeds = JSON.parse(rewardeds)
-            } else {
-                rewardeds = []
-            }
-            rewardeds.push(dayjs().format('YYYY-MM-DD HH:mm:ss'))
-            await localStorage.setItem('rewardeds', JSON.stringify(rewardeds))
-        })
-        return () => subscription.remove()
     }, [])
 
     return (

@@ -1,15 +1,32 @@
 import React, { useState, useEffect } from 'react'
-import { View, StyleSheet, Text, FlatList } from 'react-native'
+import { View, StyleSheet, Text, FlatList, Pressable } from 'react-native'
 import Svg from '../widget/Svg'
 
 const Home = ({ navigation }) => {
+    const [userId, setUserId] = useState()
     const [rewardeds, setRewardeds] = useState([])
+
+    useEffect(() => {
+        navigation.setOptions({
+            headerLeft: () => (
+                <Pressable
+                    onPress={() => {
+                        navigation.reset({ index: 0, routes: [{ name: 'home' }] })
+                    }}
+                >
+                    <Svg icon="arrow_left" size="24" color="#171717"></Svg>
+                </Pressable>
+            )
+        })
+    }, [])
 
     useEffect(() => {
         fetchData()
     }, [navigation])
 
     const fetchData = async () => {
+        let uniqueID = await localStorage.getItem('uniqueID')
+        setUserId(uniqueID)
         let rewardedsStr = await localStorage.getItem('rewardeds')
         if (rewardedsStr != null) {
             setRewardeds(JSON.parse(rewardedsStr))
@@ -36,18 +53,22 @@ const Home = ({ navigation }) => {
             }}
         >
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <Svg icon="minIO" size="22"></Svg>
-                <Text>{item.endPoint}</Text>
+                <Text>
+                    {index + 1 + '、'} {item}
+                </Text>
             </View>
         </View>
     )
 
     return (
         <View style={styles.container}>
+            <View>
+                <Text style={{ marginLeft: 12, marginTop: 12 }}>UseId: {userId}</Text>
+            </View>
             <FlatList
                 data={rewardeds}
                 renderItem={({ item, index }) => <Item item={item} index={index} />}
-                keyExtractor={item => item.name}
+                keyExtractor={item => item}
             />
         </View>
     )
@@ -56,8 +77,8 @@ const Home = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
+        // justifyContent: 'center',
+        // alignItems: 'center',
         backgroundColor: '#FFFFFF'
     }
 })

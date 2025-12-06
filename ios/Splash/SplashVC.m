@@ -3,9 +3,6 @@
 #import <AnyThinkSplash/AnyThinkSplash.h>
 
 #import "AdLoadConfigTool.h"
-
-#import "AppDelegate.h"
-
 #import "LaunchLoadingView.h"
 
 @interface SplashVC () <ATSplashDelegate>

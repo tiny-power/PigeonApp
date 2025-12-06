@@ -1,3 +1,4 @@
+#import <Security/Security.h>
 #import "RewardedVC.h"
 #import <AnyThinkSDK/AnyThinkSDK.h>
 #import <AnyThinkRewardedVideo/AnyThinkRewardedVideo.h>
@@ -21,7 +22,7 @@ RCT_EXPORT_MODULE()
 
   
 - (NSArray *)supportedEvents {
-  return @[@"wert"];
+  return @[@"rewarded"];
 }
 
 //RCT_EXPORT_METHOD(testPrint:(NSString *)name resolver:(RCTPromiseResolveBlock)resolve
@@ -77,6 +78,8 @@ RCT_EXPORT_METHOD(showAd) {
     ATShowConfig *config = [[ATShowConfig alloc] initWithScene:RewardedSceneID showCustomExt:@"testShowCustomExt"];
     
     UIViewController *rootVC = [UIApplication sharedApplication].delegate.window.rootViewController;
+    [[rootVC.view viewWithTag:1] removeFromSuperview];
+    [[rootVC.view viewWithTag:2] removeFromSuperview];
     //展示广告
     [[ATAdManager sharedManager] showRewardedVideoWithPlacementID:RewardedPlacementID config:config inViewController:rootVC delegate:self];
   });
@@ -126,8 +129,43 @@ RCT_EXPORT_METHOD(showAd) {
 ///   - extra: 额外信息字典
 - (void)rewardedVideoDidRewardSuccessForPlacemenID:(NSString *)placementID extra:(NSDictionary *)extra {
   NSLog(@"rewardedVideoDidRewardSuccessForPlacemenID:%@ extra:%@",placementID,extra);
-    
+  NSString *uniqueID = getDeviceUUID();
+  [ self sendEventWithName:@"rewarded" body:@{@"idfv": uniqueID}];
 }
+
+NSString* getDeviceUUID() {
+    NSString *service = @"com.yourapp.deviceuuid";
+    NSString *account = @"uuid";
+
+    // 1. 先从 Keychain 读取
+    NSDictionary *query = @{
+        (__bridge id)kSecClass: (__bridge id)kSecClassGenericPassword,
+        (__bridge id)kSecAttrService: service,
+        (__bridge id)kSecAttrAccount: account,
+        (__bridge id)kSecReturnData: @YES
+    };
+    
+    CFTypeRef dataRef = NULL;
+    if (SecItemCopyMatching((__bridge CFDictionaryRef)query, &dataRef) == errSecSuccess) {
+        NSData *data = (__bridge NSData *)dataRef;
+        return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    }
+
+    // 2. 没有则创建一个新的 UUID 并写入 Keychain
+    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSData *uuidData = [uuid dataUsingEncoding:NSUTF8StringEncoding];
+
+    NSDictionary *addQuery = @{
+        (__bridge id)kSecClass: (__bridge id)kSecClassGenericPassword,
+        (__bridge id)kSecAttrService: service,
+        (__bridge id)kSecAttrAccount: account,
+        (__bridge id)kSecValueData: uuidData
+    };
+
+    SecItemAdd((__bridge CFDictionaryRef)addQuery, NULL);
+    return uuid;
+}
+
 
 /// 激励广告视频开始播放
 /// - Parameters:
@@ -144,7 +182,6 @@ RCT_EXPORT_METHOD(showAd) {
 ///   - extra: 额外信息字典
 - (void)rewardedVideoDidEndPlayingForPlacementID:(NSString *)placementID extra:(NSDictionary *)extra {
     NSLog(@"rewardedVideoDidEndPlayingForPlacementID:%@ extra:%@", placementID, extra);
-    
 }
 
 /// 激励广告视频播放失败

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { StatusBar, Dimensions, View, Text, Pressable, Button, NativeModules } from 'react-native'
+import { StatusBar, Dimensions, View, Text, Pressable, Button, NativeModules, NativeEventEmitter } from 'react-native'
 
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
@@ -11,13 +11,14 @@ import axios from './src/utils/axios'
 import localStorage from './src/utils/localStorage'
 
 import Svg from './src/widget/Svg'
+import dayjs from 'dayjs'
 
 import Home from './src/scene/Home'
 import TabNavigator from './src/scene/TabNavigator'
 import NewServer from './src/scene/NewServer'
 import ListBuckets from './src/scene/ListBuckets'
 import ListObjects from './src/scene/ListObjects'
-import Rewarded from './src/scene/Rewarded'
+import OperationLog from './src/scene/OperationLog'
 
 global.axios = axios
 global.localStorage = localStorage
@@ -27,12 +28,31 @@ global.Toast = Toast
 
 const Stack = createNativeStackNavigator()
 
-const { SplashVC } = NativeModules
+const { SplashVC, BannerVC, SelfRenderVC, InterstitialVC, RewardedVC } = NativeModules
+
+const eventEmitter = new NativeEventEmitter(RewardedVC)
 
 const App = ({}) => {
     useEffect(() => {
         SplashScreen.hide()
         SplashVC.showSplash()
+        BannerVC.loadAd()
+        SelfRenderVC.loadAd()
+        InterstitialVC.loadAd()
+        RewardedVC.loadAd()
+
+        const subscription = eventEmitter.addListener('rewarded', async event => {
+            await localStorage.setItem('uniqueID', event.idfv)
+            let rewardeds = await localStorage.getItem('rewardeds')
+            if (rewardeds != null) {
+                rewardeds = JSON.parse(rewardeds)
+            } else {
+                rewardeds = []
+            }
+            rewardeds.push(dayjs().format('YYYY-MM-DD HH:mm:ss'))
+            await localStorage.setItem('rewardeds', JSON.stringify(rewardeds))
+        })
+        return () => subscription.remove()
     }, [])
 
     return (
@@ -91,10 +111,10 @@ const App = ({}) => {
                     })}
                 />
                 <Stack.Screen
-                    name="rewarded"
-                    component={Rewarded}
+                    name="operationLog"
+                    component={OperationLog}
                     options={() => ({
-                        headerTitle: '操作日记',
+                        headerTitle: 'Operation Log',
                         headerTintColor: '#171717',
                         headerStyle: {
                             backgroundColor: '#FFFFFF'

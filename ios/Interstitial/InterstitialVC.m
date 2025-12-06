@@ -88,6 +88,8 @@ RCT_EXPORT_METHOD(showAd) {
     //展示广告
     //若是全屏插屏，inViewController可传入根控制器，如tabbarController或navigationController，让广告遮挡住tabbar或navigationBar
   UIViewController *rootVC = [UIApplication sharedApplication].delegate.window.rootViewController;
+    [[rootVC.view viewWithTag:1] removeFromSuperview];
+    [[rootVC.view viewWithTag:2] removeFromSuperview];
   
     [[ATAdManager sharedManager] showInterstitialWithPlacementID:InterstitialPlacementID
         showConfig:config

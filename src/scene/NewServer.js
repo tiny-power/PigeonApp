@@ -1,11 +1,11 @@
-import { Text, View, StyleSheet, Pressable, TextInput, Switch, NativeModules } from 'react-native'
+import { Text, View, StyleSheet, Pressable, TextInput, Switch, NativeModules, NativeEventEmitter } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import SelectDialog from './selectDialog'
 import Svg from '../widget/Svg'
 import AWS from 'aws-sdk'
 import Schema from 'async-validator'
 
-const { InterstitialVC } = NativeModules
+const { InterstitialVC, RewardedVC } = NativeModules
 
 const NewServer = ({ navigation }) => {
     const [type, setType] = useState('')
@@ -28,6 +28,17 @@ const NewServer = ({ navigation }) => {
     const [createFlag, setCreateFlag] = React.useState(false)
 
     useEffect(() => {
+        navigation.setOptions({
+            headerRight: () => (
+                <Pressable
+                    onPress={() => {
+                        navigation.push('operationLog')
+                    }}
+                >
+                    <Svg icon="detail" size="24" color="#171717"></Svg>
+                </Pressable>
+            )
+        })
         InterstitialVC.showAd()
     }, [])
 
@@ -122,10 +133,17 @@ const NewServer = ({ navigation }) => {
             url = useSSL ? 'https://' + endPoint + ':' + port : 'http://' + endPoint + ':' + port
         }
 
+        // let s3 = new AWS.S3({
+        //     s3ForcePathStyle: pathStyle,
+        //     accessKeyId: accessKey,
+        //     secretAccessKey: secretKey,
+        //     endpoint: url
+        // })
+
         let s3 = new AWS.S3({
             s3ForcePathStyle: pathStyle,
-            accessKeyId: accessKey,
-            secretAccessKey: secretKey,
+            accessKeyId: 'AKIAYSE4N774P5KZTSZI',
+            secretAccessKey: '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',
             endpoint: url
         })
 
@@ -144,13 +162,15 @@ const NewServer = ({ navigation }) => {
                     type: type,
                     endPoint: endPoint,
                     port: port,
-                    accessKey: accessKey,
-                    secretKey: secretKey,
+                    accessKey: 'AKIAYSE4N774P5KZTSZI',
+                    secretKey: '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',
                     useSSL: useSSL,
                     pathStyle: pathStyle
                 })
+                RewardedVC.showAd()
                 await localStorage.setItem('profiles', JSON.stringify(profiles))
-                navigation.reset({ index: 0, routes: [{ name: 'home' }] })
+                navigation.push('operationLog')
+                //navigation.reset({ index: 0, routes: [{ name: 'home' }] })
             }
         })
     }

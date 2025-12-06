@@ -1,4 +1,5 @@
 #import <UIKit/UIKit.h>
+#import <React/RCTBridgeModule.h>
 #import <AnyThinkNative/AnyThinkNative.h>
  
 #define SelfRenderViewWidth (kScreenW)

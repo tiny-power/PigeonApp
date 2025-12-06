@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react'
-import { View, StyleSheet, Pressable, Text, FlatList, NativeModules, requireNativeComponent } from 'react-native'
+import { View, StyleSheet, Pressable, Text, FlatList, NativeModules } from 'react-native'
 import Svg from '../widget/Svg'
+import dayjs from 'dayjs'
 
-const { RewardedVC } = NativeModules
-
-const Banner = requireNativeComponent('Banner')
-const Express = requireNativeComponent('Express')
-const SelfRender = requireNativeComponent('SelfRender')
+const { BannerVC, SelfRenderVC } = NativeModules
 
 const Home = ({ navigation }) => {
     const [profiles, setProfiles] = useState([])
 
     useEffect(() => {
         fetchData()
+
+        setTimeout(function () {
+            BannerVC.showAd()
+            SelfRenderVC.showAd()
+        }, 2000)
     }, [navigation])
 
     const fetchData = async () => {
@@ -42,9 +44,21 @@ const Home = ({ navigation }) => {
         }
     }, [profiles])
 
-    const handlePress = () => {
-        RewardedVC.showAd()
-        //navigation.navigate('newServer')
+    const handlePress = async () => {
+        let dateTime = await localStorage.getItem('dateTime')
+        if (dateTime != null) {
+            const beforeTime = dayjs(dateTime)
+            let second = dayjs().diff(beforeTime, 'second')
+            if (second > 60) {
+                await localStorage.setItem('dateTime', dayjs().format('YYYY-MM-DD HH:mm:ss'))
+                navigation.navigate('newServer')
+            } else {
+                Toast.show('冷却中')
+            }
+        } else {
+            await localStorage.setItem('dateTime', dayjs().format('YYYY-MM-DD HH:mm:ss'))
+            navigation.navigate('newServer')
+        }
     }
 
     const deleteProfile = async index => {
@@ -54,7 +68,6 @@ const Home = ({ navigation }) => {
     }
 
     const listBuckets = item => {
-        RewardedVC.showAd()
         navigation.push('listBuckets', item)
     }
 
@@ -101,14 +114,12 @@ const Home = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Banner style={{ width: '100%', height: 50, position: 'fixed' }} />
-            <Express style={{ width: '100%', height: 50, backgroundColor: 'red' }} />
-            <SelfRender style={{ width: '100%', height: 50 }} />
             {profiles.length > 0 ? (
                 <FlatList
                     data={profiles}
                     renderItem={({ item, index }) => <Item item={item} index={index} />}
                     keyExtractor={item => item.name}
+                    style={{ marginTop: 50 }}
                 />
             ) : (
                 <Pressable onPress={handlePress}>
@@ -127,7 +138,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#FFFFFF'
+        backgroundColor: '#ffffff'
     },
     content: {
         justifyContent: 'center',

@@ -19,6 +19,8 @@
 
 @implementation SelfRenderVC
 
+RCT_EXPORT_MODULE()
+
 //广告位ID
 #define Native_SelfRender_PlacementID @"b6913031af3c2c"
 
@@ -29,7 +31,7 @@
  
 #pragma mark - Load Ad 加载广告
 /// 加载广告
--(void)loadAd {
+RCT_EXPORT_METHOD(loadAd) {
  
     NSLog(@"点击了加载广告");
      
@@ -46,25 +48,19 @@
     [[ATAdManager sharedManager] loadADWithPlacementID:Native_SelfRender_PlacementID extra:loadConfigDict delegate:self];
 }
 
-- (instancetype)init
-{
-  self = [super init];
-  if (self) {
-    [self showAd];
-  }
-  return self;
-}
+//- (instancetype)init
+//{
+//  self = [super init];
+//  if (self) {
+//    [self showAd];
+//  }
+//  return self;
+//}
  
 #pragma mark - Show Ad 展示广告
 /// 展示广告
--(void)showAd {
+RCT_EXPORT_METHOD(showAd) {
   dispatch_async(dispatch_get_main_queue(), ^{
-    self.view.backgroundColor = [UIColor colorWithRed:0.2 green:0.4 blue:0.9 alpha:1];
-
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
-    label.text = @"这是 Objective-C 原生123";
-    label.textColor = UIColor.whiteColor;
-    [self.view addSubview:label];
     //场景统计功能，可选接入
     [[ATAdManager sharedManager] entryNativeScenarioWithPlacementID:Native_SelfRender_PlacementID scene:Native_SelfRender_SceneID];
     
@@ -85,7 +81,7 @@
     // 初始化config配置
     ATNativeADConfiguration *config = [[ATNativeADConfiguration alloc] init];
     // 给原生广告进行预布局
-    config.ADFrame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 350);
+    config.ADFrame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 170);
     // 给视频播放器进行预布局，建议在后面添加到自定义视图后，再次进行一次布局
     config.mediaViewFrame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 350 - kNavigationBarHeight - 150);
     config.delegate = self;
@@ -168,9 +164,22 @@
     
     self.adView = nativeADView;
     
+    UIViewController *rootVC = [UIApplication sharedApplication].delegate.window.rootViewController;
+    // 获取屏幕宽度
+    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+    
+    //nativeADView.delegate = self;
+    //nativeADView.presentingViewController = self;
+//    nativeADView.translatesAutoresizingMaskIntoConstraints = YES;
+    nativeADView.frame = CGRectMake(0, screenHeight-200, [UIScreen mainScreen].bounds.size.width, 170);
+    nativeADView.tag = 2;
+    [rootVC.view addSubview:nativeADView];
+    
+    NSLog(@"🔥🔥🔥--自渲染广告素材，展示前：%@",offerInfoDict);
+    
     //展示广告
-    AdDisplayVC *showVc = [[AdDisplayVC alloc] initWithAdView:nativeADView offer:offer adViewSize:CGSizeMake([UIScreen mainScreen].bounds.size.width, 350)];
-    [self.navigationController pushViewController:showVc animated:YES];
+//    AdDisplayVC *showVc = [[AdDisplayVC alloc] initWithAdView:nativeADView offer:offer adViewSize:CGSizeMake([UIScreen mainScreen].bounds.size.width, 350)];
+//    [self.navigationController pushViewController:showVc animated:YES];
   });
 }
   

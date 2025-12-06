@@ -2,6 +2,6 @@
 #import <React/RCTEventEmitter.h>
 #import <React/RCTBridgeModule.h>
 
-@interface RewardedVC : NSObject <RCTBridgeModule>
+@interface RewardedVC : RCTEventEmitter <RCTBridgeModule>
 //@property (nonatomic, assign) NSInteger retryAttempt;
 @end

@@ -140,10 +140,13 @@ const NewServer = ({ navigation }) => {
         //     endpoint: url
         // })
 
+        let accessKeyId = 'AKIAYSE4N774P5KZTSZI'
+        let secretAccessKey = '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'
+
         let s3 = new AWS.S3({
             s3ForcePathStyle: pathStyle,
-            accessKeyId: 'AKIAYSE4N774P5KZTSZI',
-            secretAccessKey: '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',
+            accessKeyId: accessKeyId,
+            secretAccessKey: secretAccessKey,
             endpoint: url
         })
 
@@ -162,8 +165,8 @@ const NewServer = ({ navigation }) => {
                     type: type,
                     endPoint: endPoint,
                     port: port,
-                    accessKey: 'AKIAYSE4N774P5KZTSZI',
-                    secretKey: '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',
+                    accessKey: accessKeyId,
+                    secretKey: secretAccessKey,
                     useSSL: useSSL,
                     pathStyle: pathStyle
                 })

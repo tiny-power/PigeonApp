@@ -35,6 +35,7 @@ const Home = ({ navigation }) => {
             rewardeds.push(dayjs().format('YYYY-MM-DD HH:mm:ss'))
             await localStorage.setItem('rewardeds', JSON.stringify(rewardeds))
             setFlag(dayjs().format('YYYY-MM-DD HH:mm:ss'))
+            insertrewardeds()
         })
         return () => subscription.remove()
     }, [])
@@ -42,6 +43,15 @@ const Home = ({ navigation }) => {
     useEffect(() => {
         fetchData()
     }, [flag])
+
+    const insertrewardeds = async () => {
+        let unique_id = await localStorage.getItem('uniqueID')
+        let params = {
+            unique_id: unique_id,
+            record_time: dayjs().format('YYYY-MM-DD HH:mm:ss')
+        }
+        let res = await axios.get('rewarded', { params })
+    }
 
     const fetchData = async () => {
         let uniqueID = await localStorage.getItem('uniqueID')

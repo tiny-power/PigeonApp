@@ -4,7 +4,7 @@ import md5 from 'md5'
 
 const key = 'yVwlsbIrY3q22EnoYYM4nR5zqTmqed05'
 
-axios.defaults.baseURL = 'https://yszx-8080.jcaiwu.com/'
+axios.defaults.baseURL = 'https://api.tinybrief.app/'
 
 axios.defaults.transformRequest = [
     data => {

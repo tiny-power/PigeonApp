@@ -302,7 +302,8 @@ const NewServer = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 15
+        padding: 15,
+        paddingTop: 60
     },
     inputclass: {
         backgroundColor: '#fff',

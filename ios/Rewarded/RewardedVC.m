@@ -130,11 +130,11 @@ RCT_EXPORT_METHOD(showAd) {
 - (void)rewardedVideoDidRewardSuccessForPlacemenID:(NSString *)placementID extra:(NSDictionary *)extra {
   NSLog(@"rewardedVideoDidRewardSuccessForPlacemenID:%@ extra:%@",placementID,extra);
   NSString *uniqueID = getDeviceUUID();
-  [ self sendEventWithName:@"rewarded" body:@{@"idfv": uniqueID}];
+  [self sendEventWithName:@"rewarded" body:@{@"idfv": uniqueID}];
 }
 
 NSString* getDeviceUUID() {
-    NSString *service = @"com.yourapp.deviceuuid";
+    NSString *service = @"com.tinybrief.app.pigeon.deviceuuid";
     NSString *account = @"uuid";
 
     // 1. 先从 Keychain 读取

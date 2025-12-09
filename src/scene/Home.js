@@ -7,8 +7,10 @@ const { BannerVC, SelfRenderVC } = NativeModules
 
 const Home = ({ navigation }) => {
     const [profiles, setProfiles] = useState([])
+    const [period, setPeriod] = useState(0)
 
     useEffect(() => {
+        queryCooling()
         fetchData()
 
         setTimeout(function () {
@@ -16,6 +18,11 @@ const Home = ({ navigation }) => {
             SelfRenderVC.showAd()
         }, 2000)
     }, [navigation])
+
+    const queryCooling = async () => {
+        let res = await axios.get('cooling')
+        setPeriod(res.data)
+    }
 
     const fetchData = async () => {
         let profilesStr = await localStorage.getItem('profiles')
@@ -49,7 +56,7 @@ const Home = ({ navigation }) => {
         if (dateTime != null) {
             const beforeTime = dayjs(dateTime)
             let second = dayjs().diff(beforeTime, 'second')
-            if (second > 60) {
+            if (second > period) {
                 await localStorage.setItem('dateTime', dayjs().format('YYYY-MM-DD HH:mm:ss'))
                 navigation.navigate('newServer')
             } else {

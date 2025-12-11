@@ -25,7 +25,7 @@
 - (instancetype)initWithOffer:(ATNativeAdOffer *)offer {
     if (self = [super init]) {
         _nativeAdOffer = offer;
-        self.backgroundColor = randomColor;
+        //self.backgroundColor = randomColor;
         [self addView];
         [self makeConstraintsForSubviews];
         [self setupUI];

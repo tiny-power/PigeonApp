@@ -16,7 +16,7 @@ const NewServer = ({ navigation }) => {
     const [secretKey, setSecretKey] = useState('')
     const [useSSL, setUseSSL] = useState(false)
     const [pathStyle, setPathStyle] = useState(true)
-    const [selectList, setSelectList] = React.useState([
+    const [selectList, setSelectList] = useState([
         { name: 'Amazon S3' },
         { name: 'Backblaze B2' },
         { name: 'CloudFlare R2' },
@@ -24,10 +24,12 @@ const NewServer = ({ navigation }) => {
         { name: 'MinIO' },
         { name: 'Other' }
     ])
-    const [selectshow, setSelectshow] = React.useState(false)
-    const [createFlag, setCreateFlag] = React.useState(false)
+    const [selectshow, setSelectshow] = useState(false)
+    const [createFlag, setCreateFlag] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
+        setLoading(true)
         navigation.setOptions({
             headerRight: () => (
                 <Pressable
@@ -41,6 +43,14 @@ const NewServer = ({ navigation }) => {
         })
         InterstitialVC.showAd()
     }, [])
+    useEffect(() => {
+        const focusListener = navigation.addListener('focus', () => {
+            if (loading) {
+                navigation.reset({ index: 0, routes: [{ name: 'home' }] })
+            }
+        })
+        return focusListener
+    }, [loading])
 
     useEffect(() => {
         if (type === 'Amazon S3') {
@@ -106,7 +116,7 @@ const NewServer = ({ navigation }) => {
         setSelectshow(true)
     }
 
-    const addProfile = () => {
+    const addProfile = async () => {
         if (!createFlag) {
             return
         }
@@ -303,7 +313,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 15,
-        paddingTop: 60
+        paddingTop: 70
     },
     inputclass: {
         backgroundColor: '#fff',

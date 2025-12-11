@@ -78,6 +78,9 @@ RCT_EXPORT_METHOD(showAd) {
       return;
     }
     
+    UIViewController *rootVC = [UIApplication sharedApplication].delegate.window.rootViewController;
+    [[rootVC.view viewWithTag:2] removeFromSuperview];
+    
     // 初始化config配置
     ATNativeADConfiguration *config = [[ATNativeADConfiguration alloc] init];
     // 给原生广告进行预布局
@@ -164,7 +167,6 @@ RCT_EXPORT_METHOD(showAd) {
     
     self.adView = nativeADView;
     
-    UIViewController *rootVC = [UIApplication sharedApplication].delegate.window.rootViewController;
     // 获取屏幕宽度
     CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
     

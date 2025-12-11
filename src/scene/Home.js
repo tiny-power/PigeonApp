@@ -7,16 +7,25 @@ const { BannerVC, SelfRenderVC } = NativeModules
 
 const Home = ({ navigation }) => {
     const [profiles, setProfiles] = useState([])
-    const [period, setPeriod] = useState(0)
+    const [period, setPeriod] = useState(60)
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            SelfRenderVC.showAd()
+        }, 14000)
+
+        return () => clearInterval(intervalId)
+    }, [])
 
     useEffect(() => {
         queryCooling()
         fetchData()
 
-        setTimeout(function () {
+        const timerId = setTimeout(() => {
             BannerVC.showAd()
             SelfRenderVC.showAd()
         }, 2000)
+        return () => clearTimeout(timerId)
     }, [navigation])
 
     const queryCooling = async () => {
@@ -60,7 +69,7 @@ const Home = ({ navigation }) => {
                 await localStorage.setItem('dateTime', dayjs().format('YYYY-MM-DD HH:mm:ss'))
                 navigation.navigate('newServer')
             } else {
-                Toast.show('冷却中')
+                Toast.showWithGravity('冷却倒计时: ' + (60 - second) + '秒', Toast.LONG, Toast.CENTER)
             }
         } else {
             await localStorage.setItem('dateTime', dayjs().format('YYYY-MM-DD HH:mm:ss'))

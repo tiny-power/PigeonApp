@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { View, StyleSheet, Text, FlatList, Pressable, NativeModules, NativeEventEmitter } from 'react-native'
 import Svg from '../widget/Svg'
+import WaterMask from '../widget/WaterMask'
 import dayjs from 'dayjs'
 
 const { RewardedVC } = NativeModules
 
 const eventEmitter = new NativeEventEmitter(RewardedVC)
 
-const Home = ({ navigation }) => {
+const OperationLog = ({ navigation }) => {
     const [userId, setUserId] = useState('')
     const [rewardeds, setRewardeds] = useState([])
     const [flag, setFlag] = useState('')
@@ -91,6 +92,7 @@ const Home = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
+            <WaterMask />
             <View>
                 <Text style={{ marginLeft: 12, marginTop: 12 }}>UseId: {userId}</Text>
             </View>
@@ -112,4 +114,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Home
+export default OperationLog

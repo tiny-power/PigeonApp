@@ -24,6 +24,7 @@ global.localStorage = localStorage
 global.width = Dimensions.get('window').width
 global.height = Dimensions.get('window').height
 global.Toast = Toast
+global.name = 'S3Vault'
 
 const Stack = createNativeStackNavigator()
 

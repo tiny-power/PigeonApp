@@ -22,16 +22,13 @@ RCT_EXPORT_MODULE()
 
   
 - (NSArray *)supportedEvents {
-  return @[@"rewarded"];
+  return @[@"rewarded", @"record"];
 }
 
-//RCT_EXPORT_METHOD(testPrint:(NSString *)name resolver:(RCTPromiseResolveBlock)resolve
-//                  rejecter:(RCTPromiseRejectBlock)reject) {
-//    NSLog(@"%@", name);
-//    NSInteger eventId = 123;
-//    [self sendEventWithName:@"wert" body:@{@"name": @"wert"}];
-//    resolve(@(eventId));
-//}
+RCT_EXPORT_METHOD(getDeviceUUID:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject) {
+    resolve(getDeviceUUID());
+}
 
 RCT_EXPORT_METHOD(loadAd) {
     NSLog(@"点击了加载广告");
@@ -129,8 +126,7 @@ RCT_EXPORT_METHOD(showAd) {
 ///   - extra: 额外信息字典
 - (void)rewardedVideoDidRewardSuccessForPlacemenID:(NSString *)placementID extra:(NSDictionary *)extra {
   NSLog(@"rewardedVideoDidRewardSuccessForPlacemenID:%@ extra:%@",placementID,extra);
-  NSString *uniqueID = getDeviceUUID();
-  [self sendEventWithName:@"rewarded" body:@{@"idfv": uniqueID}];
+  [self sendEventWithName:@"rewarded" body:@{@"id": extra[@"id"]}];
 }
 
 NSString* getDeviceUUID() {
@@ -173,7 +169,11 @@ NSString* getDeviceUUID() {
 ///   - extra: 额外信息字典
 - (void)rewardedVideoDidStartPlayingForPlacementID:(NSString *)placementID extra:(NSDictionary *)extra {
     NSLog(@"rewardedVideoDidStartPlayingForPlacementID:%@ extra:%@", placementID, extra);
-    
+  [self sendEventWithName:@"record" body:@{
+    @"id": extra[@"id"],
+    @"publisher_revenue": extra[@"publisher_revenue"],
+    @"adunit_format": extra[@"adunit_format"]}
+  ];
 }
  
 /// 激励广告视频播放完毕

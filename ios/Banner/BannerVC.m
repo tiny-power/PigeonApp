@@ -1,6 +1,7 @@
 #import "BannerVC.h"
 #import <AnyThinkSDK/AnyThinkSDK.h>
 #import <AnyThinkBanner/AnyThinkBanner.h>
+#import <Security/Security.h>
 
 @interface BannerVC () <ATBannerDelegate>
 @property (nonatomic, strong) ATBannerView *bannerView;
@@ -18,6 +19,10 @@ RCT_EXPORT_MODULE()
 
 //请注意，banner size需要和后台配置的比例一致
 #define BannerSize CGSizeMake(320, 50)
+
+- (NSArray *)supportedEvents {
+  return @[@"record"];
+}
 
 #pragma mark - Load Ad 加载广告
 /// 加载广告
@@ -157,6 +162,12 @@ RCT_EXPORT_METHOD(showAd) {
 ///   - extra: 额外信息字典
 - (void)bannerView:(ATBannerView *)bannerView didShowAdWithPlacementID:(NSString *)placementID extra:(NSDictionary *)extra {
     NSLog(@"didShowAdWithPlacementID:%@ with extra: %@", placementID,extra);
+ 
+    [self sendEventWithName:@"record" body:@{
+      @"id": extra[@"id"],
+      @"publisher_revenue": extra[@"publisher_revenue"],
+      @"adunit_format": extra[@"adunit_format"]}
+    ];
 }
 
 /// 横幅广告被点击

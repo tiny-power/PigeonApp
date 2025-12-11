@@ -1,5 +1,5 @@
 #import "SelfRenderVC.h"
-
+#import <Security/Security.h>
 #import <AnyThinkNative/AnyThinkNative.h>
 
 #import "AdLoadConfigTool.h"
@@ -26,6 +26,10 @@ RCT_EXPORT_MODULE()
 
 //场景ID，可选，可在后台生成。没有可传入空字符串
 #define Native_SelfRender_SceneID @""
+
+- (NSArray *)supportedEvents {
+  return @[@"record"];
+}
 
 #define kNavigationBarHeight ([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationPortrait || [[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationPortraitUpsideDown ? ([[UIApplication sharedApplication]statusBarFrame].size.height + 44) : ([[UIApplication sharedApplication]statusBarFrame].size.height - 4))
  
@@ -271,6 +275,12 @@ RCT_EXPORT_METHOD(showAd) {
 - (void)didShowNativeAdInAdView:(ATNativeADView *)adView placementID:(NSString *)placementID extra:(NSDictionary *)extra {
     NSLog(@"didShowNativeAdInAdView:%@ extra:%@",placementID,extra);
     NSLog(@"🔥--原生广告adInfo信息，展示后：%@",self.nativeAdOffer.adOfferInfo);
+  
+    [self sendEventWithName:@"record" body:@{
+      @"id": extra[@"id"],
+      @"publisher_revenue": extra[@"publisher_revenue"],
+      @"adunit_format": extra[@"adunit_format"]}
+    ];
 }
 
 /// 原生广告点击了关闭按钮

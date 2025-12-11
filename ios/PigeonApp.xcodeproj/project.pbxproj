@@ -20,10 +20,8 @@
 		17758D762ECC5B5000576498 /* PPVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 17758D752ECC5B5000576498 /* PPVC.m */; };
 		17758D792ECC68A400576498 /* InterstitialVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 17758D782ECC68A400576498 /* InterstitialVC.m */; };
 		178D564A2ED8319A008988E7 /* ExpressManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 178D56492ED8319A008988E7 /* ExpressManager.m */; };
-		178D564C2ED83370008988E7 /* SelfRenderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 178D564B2ED83370008988E7 /* SelfRenderManager.m */; };
 		17BD85F72EB3523E006377CB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17BD85F62EB3523E006377CB /* Launch Screen.storyboard */; };
 		17C63AA12ED006A900B251D3 /* BannerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C63AA02ED006A900B251D3 /* BannerVC.m */; };
-		17C63AAD2ED0473C00B251D3 /* BannerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C63AAC2ED0473C00B251D3 /* BannerManager.m */; };
 		17F4F23D2ED294190071F654 /* SelfRenderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F4F23C2ED294190071F654 /* SelfRenderVC.m */; };
 		17F4F2412ED2984C0071F654 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F4F2402ED2984C0071F654 /* Tools.m */; };
 		17F4F2452ED298B40071F654 /* SelfRenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F4F2442ED298B40071F654 /* SelfRenderView.m */; };
@@ -69,11 +67,9 @@
 		17758D772ECC68A400576498 /* InterstitialVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterstitialVC.h; sourceTree = "<group>"; };
 		17758D782ECC68A400576498 /* InterstitialVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterstitialVC.m; sourceTree = "<group>"; };
 		178D56492ED8319A008988E7 /* ExpressManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExpressManager.m; sourceTree = "<group>"; };
-		178D564B2ED83370008988E7 /* SelfRenderManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelfRenderManager.m; sourceTree = "<group>"; };
 		17BD85F62EB3523E006377CB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		17C63A9F2ED006A900B251D3 /* BannerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannerVC.h; sourceTree = "<group>"; };
 		17C63AA02ED006A900B251D3 /* BannerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerVC.m; sourceTree = "<group>"; };
-		17C63AAC2ED0473C00B251D3 /* BannerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerManager.m; sourceTree = "<group>"; };
 		17F4F23B2ED294190071F654 /* SelfRenderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelfRenderVC.h; sourceTree = "<group>"; };
 		17F4F23C2ED294190071F654 /* SelfRenderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelfRenderVC.m; sourceTree = "<group>"; };
 		17F4F23F2ED2984C0071F654 /* Tools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tools.h; sourceTree = "<group>"; };
@@ -271,9 +267,7 @@
 		178D56482ED82C5E008988E7 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				17C63AAC2ED0473C00B251D3 /* BannerManager.m */,
 				178D56492ED8319A008988E7 /* ExpressManager.m */,
-				178D564B2ED83370008988E7 /* SelfRenderManager.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -636,7 +630,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17C63AAD2ED0473C00B251D3 /* BannerManager.m in Sources */,
 				17758D702ECC584700576498 /* AdLoadConfigTool.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				17C63AA12ED006A900B251D3 /* BannerVC.m in Sources */,
@@ -653,7 +646,6 @@
 				17F4F2492ED29E730071F654 /* SplashVC.m in Sources */,
 				17FEF5D82ED1938100D1E63C /* ExpressVC.m in Sources */,
 				178D564A2ED8319A008988E7 /* ExpressManager.m in Sources */,
-				178D564C2ED83370008988E7 /* SelfRenderManager.m in Sources */,
 				17758D6A2ECC567E00576498 /* AdSDKManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

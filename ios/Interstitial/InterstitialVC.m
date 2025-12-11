@@ -2,6 +2,7 @@
 #import <AnyThinkSDK/AnyThinkSDK.h>
 #import <AnyThinkInterstitial/AnyThinkInterstitial.h>
 #import <UIKit/UIKit.h>
+#import <Security/Security.h>
 
 @implementation InterstitialVC
 
@@ -16,7 +17,7 @@ RCT_EXPORT_MODULE()
 
   
 - (NSArray *)supportedEvents {
-  return @[@"wert"];
+  return @[@"record"];
 }
 
 //RCT_EXPORT_METHOD(testPrint:(NSString *)name resolver:(RCTPromiseResolveBlock)resolve
@@ -146,6 +147,12 @@ RCT_EXPORT_METHOD(showAd) {
 ///   - extra: 额外信息字典
 - (void)interstitialDidShowForPlacementID:(NSString *)placementID extra:(NSDictionary *)extra {
     NSLog(@"interstitialDidShowForPlacementID:%@ extra:%@", placementID, extra);
+    
+   [self sendEventWithName:@"record" body:@{
+      @"id": extra[@"id"],
+      @"publisher_revenue": extra[@"publisher_revenue"],
+      @"adunit_format": extra[@"adunit_format"]}
+    ];
 }
 
 /// 广告展示失败

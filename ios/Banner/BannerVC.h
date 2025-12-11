@@ -1,7 +1,8 @@
 #import <Foundation/Foundation.h>
+#import <React/RCTEventEmitter.h>
 #import <React/RCTBridgeModule.h>
 #import <AnyThinkBanner/AnyThinkBanner.h>
 
-@interface BannerVC : UIViewController <RCTBridgeModule>
+@interface BannerVC : RCTEventEmitter <RCTBridgeModule>
 
 @end

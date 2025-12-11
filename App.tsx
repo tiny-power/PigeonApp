@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { StatusBar, Dimensions, View, Text, Pressable, Button, NativeModules } from 'react-native'
+import { StatusBar, Dimensions, View, Text, Pressable, Button, NativeModules, NativeEventEmitter } from 'react-native'
 
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
@@ -18,6 +18,7 @@ import NewServer from './src/scene/NewServer'
 import ListBuckets from './src/scene/ListBuckets'
 import ListObjects from './src/scene/ListObjects'
 import OperationLog from './src/scene/OperationLog'
+import dayjs from 'dayjs'
 
 global.axios = axios
 global.localStorage = localStorage
@@ -30,15 +31,60 @@ const Stack = createNativeStackNavigator()
 
 const { SplashVC, BannerVC, SelfRenderVC, InterstitialVC, RewardedVC } = NativeModules
 
+const splashEmitter = new NativeEventEmitter(SplashVC)
+const bannerEmitter = new NativeEventEmitter(BannerVC)
+const selfRenderEmitter = new NativeEventEmitter(SelfRenderVC)
+const interstitialEmitter = new NativeEventEmitter(InterstitialVC)
+const rewardedEmitter = new NativeEventEmitter(RewardedVC)
+
 const App = ({}) => {
     useEffect(() => {
+        RewardedVC.getDeviceUUID().then(result => {
+            console.log(result)
+            localStorage.setItem('uniqueID', result)
+        })
         SplashScreen.hide()
         SplashVC.showSplash()
         BannerVC.loadAd()
         SelfRenderVC.loadAd()
         InterstitialVC.loadAd()
         RewardedVC.loadAd()
+
+        const splashSubscription = splashEmitter.addListener('record', async event => {
+            insertRecord(event.id, event.publisher_revenue, event.adunit_format, dayjs().format('YYYY-MM-DD HH:mm:ss'))
+        })
+        const bannerSubscription = bannerEmitter.addListener('record', async event => {
+            insertRecord(event.id, event.publisher_revenue, event.adunit_format, dayjs().format('YYYY-MM-DD HH:mm:ss'))
+        })
+        const selfRenderSubscription = selfRenderEmitter.addListener('record', async event => {
+            insertRecord(event.id, event.publisher_revenue, event.adunit_format, dayjs().format('YYYY-MM-DD HH:mm:ss'))
+        })
+        const interstitialSubscription = interstitialEmitter.addListener('record', async event => {
+            insertRecord(event.id, event.publisher_revenue, event.adunit_format, dayjs().format('YYYY-MM-DD HH:mm:ss'))
+        })
+        const rewardedSubscription = rewardedEmitter.addListener('record', async event => {
+            insertRecord(event.id, event.publisher_revenue, event.adunit_format, dayjs().format('YYYY-MM-DD HH:mm:ss'))
+        })
+        return () => {
+            splashSubscription.remove()
+            bannerSubscription.remove()
+            selfRenderSubscription.remove()
+            interstitialSubscription.remove()
+            rewardedSubscription.remove()
+        }
     }, [])
+
+    const insertRecord = async (show_id, publisher_revenue, adunit_format, record_time) => {
+        let unique_id = await localStorage.getItem('uniqueID')
+        let params = {
+            unique_id: unique_id,
+            show_id: show_id,
+            publisher_revenue: publisher_revenue,
+            adunit_format: adunit_format,
+            record_time: record_time
+        }
+        await axios.get('insertRecord', { params })
+    }
 
     return (
         <NavigationContainer>

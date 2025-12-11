@@ -5,7 +5,6 @@ import WaterMask from '../widget/WaterMask'
 import dayjs from 'dayjs'
 
 const { RewardedVC } = NativeModules
-
 const eventEmitter = new NativeEventEmitter(RewardedVC)
 
 const OperationLog = ({ navigation }) => {
@@ -26,7 +25,6 @@ const OperationLog = ({ navigation }) => {
             )
         })
         const subscription = eventEmitter.addListener('rewarded', async event => {
-            await localStorage.setItem('uniqueID', event.idfv)
             let rewardeds = await localStorage.getItem('rewardeds')
             if (rewardeds != null) {
                 rewardeds = JSON.parse(rewardeds)
@@ -36,7 +34,7 @@ const OperationLog = ({ navigation }) => {
             rewardeds.push(dayjs().format('YYYY-MM-DD HH:mm:ss'))
             await localStorage.setItem('rewardeds', JSON.stringify(rewardeds))
             setFlag(dayjs().format('YYYY-MM-DD HH:mm:ss'))
-            insertrewardeds()
+            insertrewardeds(event.id)
         })
         return () => subscription.remove()
     }, [])
@@ -45,13 +43,14 @@ const OperationLog = ({ navigation }) => {
         fetchData()
     }, [flag])
 
-    const insertrewardeds = async () => {
+    const insertrewardeds = async id => {
         let unique_id = await localStorage.getItem('uniqueID')
         let params = {
+            id: id,
             unique_id: unique_id,
             record_time: dayjs().format('YYYY-MM-DD HH:mm:ss')
         }
-        let res = await axios.get('rewarded', { params })
+        await axios.get('rewarded', { params })
     }
 
     const fetchData = async () => {

@@ -40,7 +40,6 @@ const rewardedEmitter = new NativeEventEmitter(RewardedVC)
 const App = ({}) => {
     useEffect(() => {
         RewardedVC.getDeviceUUID().then(result => {
-            console.log(result)
             localStorage.setItem('uniqueID', result)
         })
         SplashScreen.hide()

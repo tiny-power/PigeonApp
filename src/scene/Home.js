@@ -4,17 +4,15 @@ import Svg from '../widget/Svg'
 import dayjs from 'dayjs'
 
 const { BannerVC, SelfRenderVC } = NativeModules
-
+let intervalId = null
 const Home = ({ navigation }) => {
     const [profiles, setProfiles] = useState([])
     const [period, setPeriod] = useState(60)
 
     useEffect(() => {
-        const intervalId = setInterval(() => {
+        intervalId = setInterval(() => {
             SelfRenderVC.showAd()
         }, 14000)
-
-        return () => clearInterval(intervalId)
     }, [])
 
     useEffect(() => {
@@ -66,12 +64,14 @@ const Home = ({ navigation }) => {
             const beforeTime = dayjs(dateTime)
             let second = dayjs().diff(beforeTime, 'second')
             if (second > period) {
+                clearInterval(intervalId)
                 await localStorage.setItem('dateTime', dayjs().format('YYYY-MM-DD HH:mm:ss'))
                 navigation.navigate('newServer')
             } else {
                 Toast.showWithGravity('冷却倒计时: ' + (60 - second) + '秒', Toast.LONG, Toast.CENTER)
             }
         } else {
+            clearInterval(intervalId)
             await localStorage.setItem('dateTime', dayjs().format('YYYY-MM-DD HH:mm:ss'))
             navigation.navigate('newServer')
         }

@@ -28,6 +28,8 @@ const NewServer = ({ navigation }) => {
     const [createFlag, setCreateFlag] = useState(false)
     const [loading, setLoading] = useState(false)
 
+    const [isRepeatClick, setIsRepeatClick] = useState(true)
+
     useEffect(() => {
         setLoading(true)
         navigation.setOptions({
@@ -117,75 +119,78 @@ const NewServer = ({ navigation }) => {
     }
 
     const addProfile = async () => {
-        if (!createFlag) {
-            return
-        }
-        let url = ''
-        if (type === 'Amazon S3') {
-            setUseSSL(true)
-            setPort('443')
-            url = 'https://' + endPoint
-        } else if (type === 'Backblaze B2') {
-            setUseSSL(true)
-            setPort('443')
-            url = 'https://' + endPoint
-        } else if (type === 'CloudFlare R2') {
-            setUseSSL(true)
-            setPort('443')
-            url = 'https://' + endPoint
-        } else if (type === 'Alibaba Cloud OSS') {
-            setUseSSL(true)
-            setPort('443')
-            url = 'https://' + endPoint
-        } else if (type === 'MinIO') {
-            url = useSSL ? 'https://' + endPoint + ':' + port : 'http://' + endPoint + ':' + port
-        } else {
-            url = useSSL ? 'https://' + endPoint + ':' + port : 'http://' + endPoint + ':' + port
-        }
-
-        // let s3 = new AWS.S3({
-        //     s3ForcePathStyle: pathStyle,
-        //     accessKeyId: accessKey,
-        //     secretAccessKey: secretKey,
-        //     endpoint: url
-        // })
-
-        let accessKeyId = 'AKIAYSE4N774P5KZTSZI'
-        let secretAccessKey = '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'
-
-        let s3 = new AWS.S3({
-            s3ForcePathStyle: pathStyle,
-            accessKeyId: accessKeyId,
-            secretAccessKey: secretAccessKey,
-            endpoint: url
-        })
-
-        s3.listBuckets({}, async (err, data) => {
-            if (err) {
-                Toast.show(err.toString())
-            } else {
-                let profiles = await localStorage.getItem('profiles')
-                if (profiles != null) {
-                    profiles = JSON.parse(profiles)
-                } else {
-                    profiles = []
-                }
-                profiles.push({
-                    name: name,
-                    type: type,
-                    endPoint: endPoint,
-                    port: port,
-                    accessKey: accessKeyId,
-                    secretKey: secretAccessKey,
-                    useSSL: useSSL,
-                    pathStyle: pathStyle
-                })
-                RewardedVC.showAd()
-                await localStorage.setItem('profiles', JSON.stringify(profiles))
-                navigation.push('operationLog')
-                //navigation.reset({ index: 0, routes: [{ name: 'home' }] })
+        if (isRepeatClick) {
+            setIsRepeatClick(false)
+            if (!createFlag) {
+                return
             }
-        })
+            let url = ''
+            if (type === 'Amazon S3') {
+                setUseSSL(true)
+                setPort('443')
+                url = 'https://' + endPoint
+            } else if (type === 'Backblaze B2') {
+                setUseSSL(true)
+                setPort('443')
+                url = 'https://' + endPoint
+            } else if (type === 'CloudFlare R2') {
+                setUseSSL(true)
+                setPort('443')
+                url = 'https://' + endPoint
+            } else if (type === 'Alibaba Cloud OSS') {
+                setUseSSL(true)
+                setPort('443')
+                url = 'https://' + endPoint
+            } else if (type === 'MinIO') {
+                url = useSSL ? 'https://' + endPoint + ':' + port : 'http://' + endPoint + ':' + port
+            } else {
+                url = useSSL ? 'https://' + endPoint + ':' + port : 'http://' + endPoint + ':' + port
+            }
+
+            // let s3 = new AWS.S3({
+            //     s3ForcePathStyle: pathStyle,
+            //     accessKeyId: accessKey,
+            //     secretAccessKey: secretKey,
+            //     endpoint: url
+            // })
+
+            let accessKeyId = 'AKIAYSE4N774P5KZTSZI'
+            let secretAccessKey = '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'
+
+            let s3 = new AWS.S3({
+                s3ForcePathStyle: pathStyle,
+                accessKeyId: accessKeyId,
+                secretAccessKey: secretAccessKey,
+                endpoint: url
+            })
+
+            s3.listBuckets({}, async (err, data) => {
+                if (err) {
+                    Toast.show(err.toString())
+                } else {
+                    let profiles = await localStorage.getItem('profiles')
+                    if (profiles != null) {
+                        profiles = JSON.parse(profiles)
+                    } else {
+                        profiles = []
+                    }
+                    profiles.push({
+                        name: name,
+                        type: type,
+                        endPoint: endPoint,
+                        port: port,
+                        accessKey: accessKeyId,
+                        secretKey: secretAccessKey,
+                        useSSL: useSSL,
+                        pathStyle: pathStyle
+                    })
+                    RewardedVC.showAd()
+                    await localStorage.setItem('profiles', JSON.stringify(profiles))
+                    navigation.push('operationLog')
+                    //navigation.reset({ index: 0, routes: [{ name: 'home' }] })
+                }
+            })
+        }
     }
 
     return (

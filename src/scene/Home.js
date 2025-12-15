@@ -10,20 +10,18 @@ const Home = ({ navigation }) => {
     const [period, setPeriod] = useState(60)
 
     useEffect(() => {
-        intervalId = setInterval(() => {
-            SelfRenderVC.showAd()
-        }, 14000)
-    }, [])
-
-    useEffect(() => {
         queryCooling()
         fetchData()
 
-        const timerId = setTimeout(() => {
+        intervalId = setInterval(() => {
+            SelfRenderVC.showAd()
+        }, 14000)
+
+        navigation.addListener('focus', async () => {
+            await localStorage.setItem('dateTime', dayjs().format('YYYY-MM-DD HH:mm:ss'))
             BannerVC.showAd()
             SelfRenderVC.showAd()
-        }, 2000)
-        return () => clearTimeout(timerId)
+        })
     }, [navigation])
 
     const queryCooling = async () => {
@@ -65,14 +63,12 @@ const Home = ({ navigation }) => {
             let second = dayjs().diff(beforeTime, 'second')
             if (second > period) {
                 clearInterval(intervalId)
-                await localStorage.setItem('dateTime', dayjs().format('YYYY-MM-DD HH:mm:ss'))
                 navigation.navigate('newServer')
             } else {
                 Toast.showWithGravity('冷却倒计时: ' + (60 - second) + '秒', Toast.LONG, Toast.CENTER)
             }
         } else {
             clearInterval(intervalId)
-            await localStorage.setItem('dateTime', dayjs().format('YYYY-MM-DD HH:mm:ss'))
             navigation.navigate('newServer')
         }
     }

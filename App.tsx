@@ -33,7 +33,6 @@ const { SplashVC, BannerVC, SelfRenderVC, InterstitialVC, RewardedVC } = NativeM
 
 const splashEmitter = new NativeEventEmitter(SplashVC)
 const bannerEmitter = new NativeEventEmitter(BannerVC)
-const selfRenderEmitter = new NativeEventEmitter(SelfRenderVC)
 const interstitialEmitter = new NativeEventEmitter(InterstitialVC)
 const rewardedEmitter = new NativeEventEmitter(RewardedVC)
 
@@ -55,9 +54,6 @@ const App = ({}) => {
         const bannerSubscription = bannerEmitter.addListener('record', async event => {
             insertRecord(event.id, event.publisher_revenue, event.adunit_format, dayjs().format('YYYY-MM-DD HH:mm:ss'))
         })
-        const selfRenderSubscription = selfRenderEmitter.addListener('record', async event => {
-            insertRecord(event.id, event.publisher_revenue, event.adunit_format, dayjs().format('YYYY-MM-DD HH:mm:ss'))
-        })
         const interstitialSubscription = interstitialEmitter.addListener('record', async event => {
             insertRecord(event.id, event.publisher_revenue, event.adunit_format, dayjs().format('YYYY-MM-DD HH:mm:ss'))
         })
@@ -67,7 +63,6 @@ const App = ({}) => {
         return () => {
             splashSubscription.remove()
             bannerSubscription.remove()
-            selfRenderSubscription.remove()
             interstitialSubscription.remove()
             rewardedSubscription.remove()
         }

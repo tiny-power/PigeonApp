@@ -3,6 +3,6 @@
 #import <React/RCTBridgeModule.h>
 #import <AnyThinkNative/AnyThinkNative.h>
 
-@interface SelfRenderVC : RCTEventEmitter <RCTBridgeModule>
+@interface SelfRenderVC : UIViewController <RCTBridgeModule>
 
 @end

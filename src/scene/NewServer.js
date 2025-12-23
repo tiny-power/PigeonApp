@@ -48,6 +48,7 @@ const NewServer = ({ navigation }) => {
     useEffect(() => {
         const focusListener = navigation.addListener('focus', () => {
             if (loading) {
+                InterstitialVC.showAd()
                 navigation.reset({ index: 0, routes: [{ name: 'home' }] })
             }
         })
@@ -119,11 +120,11 @@ const NewServer = ({ navigation }) => {
     }
 
     const addProfile = async () => {
+        if (!createFlag) {
+            return
+        }
         if (isRepeatClick) {
             setIsRepeatClick(false)
-            if (!createFlag) {
-                return
-            }
             let url = ''
             if (type === 'Amazon S3') {
                 setUseSSL(true)

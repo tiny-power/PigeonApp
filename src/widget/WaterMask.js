@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         transform: ' rotate(-25deg)'
     },
     waterMaskItemName: {
-        fontSize: 16,
+        fontSize: 36,
         color: '#eee',
         margin: 40,
         textAlign: 'center'

@@ -19,8 +19,8 @@ const Home = ({ navigation }) => {
 
         navigation.addListener('focus', async () => {
             await localStorage.setItem('dateTime', dayjs().format('YYYY-MM-DD HH:mm:ss'))
-            BannerVC.showAd()
             SelfRenderVC.showAd()
+            BannerVC.showAd()
         })
     }, [navigation])
 

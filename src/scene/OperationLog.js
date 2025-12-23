@@ -4,7 +4,7 @@ import Svg from '../widget/Svg'
 import WaterMask from '../widget/WaterMask'
 import dayjs from 'dayjs'
 
-const { RewardedVC } = NativeModules
+const { RewardedVC, InterstitialVC } = NativeModules
 const eventEmitter = new NativeEventEmitter(RewardedVC)
 
 const OperationLog = ({ navigation }) => {
@@ -17,6 +17,7 @@ const OperationLog = ({ navigation }) => {
             headerLeft: () => (
                 <Pressable
                     onPress={() => {
+                        InterstitialVC.showAd()
                         navigation.reset({ index: 0, routes: [{ name: 'home' }] })
                     }}
                 >

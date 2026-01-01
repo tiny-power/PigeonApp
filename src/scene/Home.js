@@ -80,7 +80,7 @@ const Home = ({ navigation }) => {
     }
 
     const listBuckets = item => {
-        navigation.push('listBuckets', item)
+        //navigation.push('listBuckets', item)
     }
 
     const Item = ({ item, index }) => (

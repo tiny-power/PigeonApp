@@ -158,39 +158,58 @@ const NewServer = ({ navigation }) => {
             let accessKeyId = 'AKIAYSE4N774P5KZTSZI'
             let secretAccessKey = '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'
 
-            let s3 = new AWS.S3({
-                s3ForcePathStyle: pathStyle,
-                accessKeyId: accessKeyId,
-                secretAccessKey: secretAccessKey,
-                endpoint: url
+            // let s3 = new AWS.S3({
+            //     s3ForcePathStyle: pathStyle,
+            //     accessKeyId: accessKeyId,
+            //     secretAccessKey: secretAccessKey,
+            //     endpoint: url
+            // })
+            let profiles = await localStorage.getItem('profiles')
+            if (profiles != null) {
+                profiles = JSON.parse(profiles)
+            } else {
+                profiles = []
+            }
+            profiles.push({
+                name: name,
+                type: type,
+                endPoint: endPoint,
+                port: port,
+                accessKey: accessKeyId,
+                secretKey: secretAccessKey,
+                useSSL: useSSL,
+                pathStyle: pathStyle
             })
+            RewardedVC.showAd()
+            await localStorage.setItem('profiles', JSON.stringify(profiles))
+            navigation.push('operationLog')
 
-            s3.listBuckets({}, async (err, data) => {
-                if (err) {
-                    Toast.show(err.toString())
-                } else {
-                    let profiles = await localStorage.getItem('profiles')
-                    if (profiles != null) {
-                        profiles = JSON.parse(profiles)
-                    } else {
-                        profiles = []
-                    }
-                    profiles.push({
-                        name: name,
-                        type: type,
-                        endPoint: endPoint,
-                        port: port,
-                        accessKey: accessKeyId,
-                        secretKey: secretAccessKey,
-                        useSSL: useSSL,
-                        pathStyle: pathStyle
-                    })
-                    RewardedVC.showAd()
-                    await localStorage.setItem('profiles', JSON.stringify(profiles))
-                    navigation.push('operationLog')
-                    //navigation.reset({ index: 0, routes: [{ name: 'home' }] })
-                }
-            })
+            // s3.listBuckets({}, async (err, data) => {
+            //     if (err) {
+            //         Toast.show(err.toString())
+            //     } else {
+            //         let profiles = await localStorage.getItem('profiles')
+            //         if (profiles != null) {
+            //             profiles = JSON.parse(profiles)
+            //         } else {
+            //             profiles = []
+            //         }
+            //         profiles.push({
+            //             name: name,
+            //             type: type,
+            //             endPoint: endPoint,
+            //             port: port,
+            //             accessKey: accessKeyId,
+            //             secretKey: secretAccessKey,
+            //             useSSL: useSSL,
+            //             pathStyle: pathStyle
+            //         })
+            //         RewardedVC.showAd()
+            //         await localStorage.setItem('profiles', JSON.stringify(profiles))
+            //         navigation.push('operationLog')
+            //         //navigation.reset({ index: 0, routes: [{ name: 'home' }] })
+            //     }
+            // })
         }
     }
 

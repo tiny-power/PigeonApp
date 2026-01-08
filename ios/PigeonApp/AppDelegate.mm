@@ -3,6 +3,7 @@
 #import <React/RCTBundleURLProvider.h>
 
 #import "AdSDKManager.h"
+#import <AppTrackingTransparency/AppTrackingTransparency.h>
 
 @implementation AppDelegate
 
@@ -18,7 +19,6 @@
 
   //开启日志后，调用检查集成情况方法
   [ATAPI integrationChecking];
-  
   [[AdSDKManager sharedManager] initSDK];
  
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
@@ -27,6 +27,14 @@
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
 {
   return [self getBundleURL];
+}
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    if (@available(iOS 14, *)) {
+        //iOS 14
+        [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+
+        }];
+    }
 }
 
 - (NSURL *)getBundleURL
